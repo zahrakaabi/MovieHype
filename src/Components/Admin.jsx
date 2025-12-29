@@ -25,7 +25,7 @@ export const Admin = ({movies, searchInput}) => {
   //Posting data to the db.json==============================
   const handleSubmit = async (e) => {
   e.preventDefault()
-      await axios.post(`https://movieapp-10554-default-rtdb.firebaseio.com/posts.json`,input)
+      await axios.post(`https://movieappl-default-rtdb.firebaseio.com/posts.json`,input)
       .then(response => {console.log(response)
                       console.log(response.data)})
       .then(response => refresh())
@@ -38,7 +38,7 @@ export const Admin = ({movies, searchInput}) => {
   const handleDelete = async (id) => {
     let confirmDelete = window.confirm("Are you sure to delete this movie?")
         if (confirmDelete) {
-        await axios.delete(`https://movieapp-10554-default-rtdb.firebaseio.com/posts/${id}.json`)
+        await axios.delete(`https://movieappl-default-rtdb.firebaseio.com/posts/${id}.json`)
         .then(response => {console.log(response); console.log(response.data)})
         .then(response => refresh())
         .catch(error => console.log(error))
@@ -49,7 +49,7 @@ export const Admin = ({movies, searchInput}) => {
   const handleDeleteAll = async () => {
     let confirmDelete = window.confirm("Are you sure to delete all the movies?")
         if (confirmDelete) {
-        await axios.delete(`https://movieapp-10554-default-rtdb.firebaseio.com/posts.json`)
+        await axios.delete(`https://movieappl-default-rtdb.firebaseio.com/posts.json`)
         .then(response => {console.log(response); console.log(response.data)})
         .then(response => refresh())
         .catch(error => console.log(error))
@@ -124,15 +124,15 @@ return (
              </thead>
     
              <tbody>
-           {Object.keys(movies).filter( filtredElement => 
-           movies[filtredElement].Title.toLowerCase().includes(searchInput)
-           ).map(element => 
+           {Object.keys(movies)?.filter( filtredElement => 
+           movies[filtredElement]?.Title?.toLowerCase().includes(searchInput)
+           )?.map(element => 
                 <>
                 <tr>
-                <td>{movies[element].id}</td>
-                <td><img src={movies[element].Poster} alt={movies[element].Title} className="post-size-img"/></td>
-                <td>{movies[element].Title}</td>
-                <td>{movies[element].Genre}</td>
+                <td>{movies[element]?.id}</td>
+                <td><img src={movies[element]?.Poster} alt={movies[element]?.Title} className="post-size-img"/></td>
+                <td>{movies[element]?.Title}</td>
+                <td>{movies[element]?.Genre}</td>
                 <td>
                    <span>
                    <Button variant="danger" onClick={ () =>handleDelete(element)}><i class="far fa-trash-alt"></i></Button>

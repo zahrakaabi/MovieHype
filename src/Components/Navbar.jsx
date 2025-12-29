@@ -17,9 +17,14 @@ function Menu({getSearchInput, favorite}){
                         <Link className="linked--page" to="/WatchedList">Watched</Link>
                         <Form inline>
                             <FormControl type="text" placeholder="SEARCH" onChange={getSearchInput}/>
-                            <Button variant="outline-secondary"><i class="fas fa-search  "></i></Button>
+                            <Button variant="outline-secondary">
+                                <i className="fas fa-search  "></i>
+                            </Button>
                         </Form>
-                        <Link className="heart" to="/Favorite"><i class="fas fa-heart"></i><span className="favorite--value">{favorite}</span></Link>
+                        <Link className="heart" to="/Favorite">
+                            <i className="fas fa-heart"></i>
+                            <span className="favorite--value">{favorite}</span>
+                        </Link>
                         <SignUp/>
                     </Nav>
                 </Navbar.Collapse>

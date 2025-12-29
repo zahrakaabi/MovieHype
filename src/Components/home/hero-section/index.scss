@@ -1,0 +1,192 @@
+@use '../../../shared/styles/variables.scss' as vars; 
+
+.hero-section {
+    min-height: 100vh;
+    background-image: url(../../../assets/images/witcher.jpg);
+    background-size: cover;
+    background-position:center;
+    position: relative;
+
+    .movie--cover {
+        color: vars.$clr-primary-light;
+
+        &__overview {
+            max-width: 50%;
+
+            @media (max-width: 768px) {
+                max-width: 90%;
+            }
+
+            .title {
+                font-size: 8.5vw;
+                font-weight: 700;
+                line-height: 1;
+
+                @media (max-width: 768px) {
+                    font-size: 17vw;
+                }
+            }
+
+            .data-type-container {
+                .date,
+                .type {
+                    font-size: 1.4rem;
+                }
+
+                hr {
+                    margin-left: 1rem;
+                    margin-right: 1rem;
+                    height: 1.8rem;
+                    width: .2rem;
+                    background-color: vars.$clr-secondary;
+                    border: none;
+                }
+            }
+        }
+
+        &__story,
+        &__trailers {
+            margin-top: 5rem;
+
+            h2 {
+                font-size: 2rem;
+                font-weight: 700;
+                width: 20rem;
+            }
+        }
+
+        &__story {
+            .story-content {
+                p {
+                    max-width: 34ch;
+                    margin-bottom: 1.5rem;
+                    font: normal 400 1.4rem sans-serif;
+                    line-height: 1.4;
+                }
+
+                .read--more {
+                    color: vars.$clr-secondary;
+                    cursor: pointer;
+                    font: normal 400 1.4rem sans-serif;
+
+                    i {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+
+        &__trailers {
+            .trailers-images {
+                div {
+                    position: relative;
+                    width: 20rem;
+                    aspect-ratio: 16 / 9;
+                    max-width: 30%;
+                    border-radius: 5px;
+
+                    &::after{
+                        font-size: 4rem;
+                        font-weight: 500;
+                        position: absolute;
+                        bottom: -2.2rem;
+                        right: 0;
+                    }
+                    
+                    &:nth-child(1) {
+                        background-image: url("../../../assets/images/01.png");
+                        background-size: cover;
+
+                        &::after{
+                            content: '01';
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        background-image: url("../../../assets/images/02.jpg");
+                        background-size: cover;
+
+                        &::after{
+                            content: '02';
+                        }
+                    }
+
+                    &:nth-child(3) {
+                        background-image: url("../../../assets/images/03.jpg");
+                        background-size: cover;
+
+                        &::after{
+                            content: '03';
+                        }
+                    }
+                }
+            }
+
+            .cta-container {
+                margin-left: 2rem;
+                cursor: pointer;
+                border: none;
+                background: transparent;
+                color: vars.$clr-primary-light;
+
+                @media (max-width: 1024px) {
+                    margin-top: 3rem;
+                }
+
+                div {
+                    position: relative;
+                    border-radius: 50%;
+                    width: 5rem;
+                    aspect-ratio: 1 / 1;
+                    background-color: vars.$clr-secondary;
+
+                    &::before{
+                        content: "";
+                        position: absolute;
+                        background-color: vars.$clr-secondary;
+                        top: 0;
+                        bottom: 0;
+                        right: 0;
+                        left: 0;
+                        border-radius: 50%;
+                        animation: pulse 1000ms infinite;
+                    }
+                }
+
+                p {
+                    font-size: 1.8rem;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .social--media {
+        position: absolute;
+        right: 10%;
+        top: 0;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        color: vars.$clr-primary-light;
+        
+        @media (max-width: 768px) {
+            right: 15px;
+        }
+
+        .social-link {
+            font-size: 1.6rem;
+            font-weight: 400;
+        }
+    }
+}
+
+@keyframes pulse{
+  0%{
+    transform: scale(.95);
+    opacity: 0.75;
+  }
+  100%{
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}

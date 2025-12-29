@@ -26,7 +26,7 @@ export const UpdatedModal = ({element,x, refresh}) => {
 
     //Editing data from db.json================================
     const handleUpdate = async (id) => {
-    await axios.put(`https://movieapp-10554-default-rtdb.firebaseio.com/posts/${id}.json`,input)
+    await axios.put(`https://movieappl-default-rtdb.firebaseio.com/posts/${id}.json`,input)
     .then(response => {console.log('Status:' , response.status)
                        console.log('Data : ', response.data)
                        setInput(response.data)})

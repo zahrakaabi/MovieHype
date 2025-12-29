@@ -9,8 +9,8 @@ function Movies({searchInput, getFavoriteValue, movies, getWatchedList}){
         <>
         <div className="cards mt-5 pt-5">
            
-        {movies.filter((filtredElement)=>
-                filtredElement.Title.toLowerCase().includes(searchInput.toLowerCase()))
+        {movies?.filter((filtredElement)=>
+                filtredElement?.Title?.toLowerCase().includes(searchInput.toLowerCase()))
                 .map(element =>
 
             <Card className="movie">

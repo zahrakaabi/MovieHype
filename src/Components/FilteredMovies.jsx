@@ -1,17 +1,19 @@
 import {Card} from 'react-bootstrap'
 import Menu from './Navbar'
 
-export const FilteredSeries = ({searchInput, movies, getFavoriteValue}) =>{
-    return (
-        <>
-        <div className="cards mt-5 pt-5">
 
-            {movies.filter((filtredElement)=>{
-                if (filtredElement.Type === "movie"){
-                    return 
-                }else if ((filtredElement.Type === "series") && filtredElement.Title.toLowerCase().includes(searchInput.toLowerCase())){
+export default function FilteredMovies({movies, searchInput, getFavoriteValue}){
+
+
+    return (
+        <div>
+           <div className="cards mt-5 pt-5">
+            {movies?.filter((filtredElement)=>{
+                if (filtredElement?.Type === "series"){
+                    return
+                }else if ((filtredElement?.Type === "movie") && filtredElement?.Title?.toLowerCase().includes(searchInput.toLowerCase())){
                     return filtredElement
-                }
+                }   
             }).map(element =>
 
             <Card className="movie">
@@ -29,6 +31,7 @@ export const FilteredSeries = ({searchInput, movies, getFavoriteValue}) =>{
             </Card>
             )}
         </div>
-     </>
+
+        </div>
     )
 }
