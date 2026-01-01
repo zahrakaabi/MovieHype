@@ -2,25 +2,30 @@
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
 // Packages
+import { Route, Routes } from "react-router-dom";
 
 // UI Local Components
-import { Home } from './pages';
+import Layout from '../layout/layout';
+import { Home } from '../pages';
+
+// Context
+import { MoviesProvider } from "../context";
 
 // Styles
 import './App.scss';
 
 
-import { BrowserRouter, Route, Routes} from "react-router-dom";
-import Menu from './Components/Navbar'
-import FilteredMovies from './Components/FilteredMovies'
-import {FilteredSeries} from './Components/FilteredSeries'
-import Favorite from './Components/Favorite'
-import {WatchedList} from './Components/WatchedList'
-import Footer from './Components/Footer'
+
+
+// import Menu from '../components/Navbar'
+// import FilteredMovies from '../components/FilteredMovies'
+// import {FilteredSeries} from '../components/FilteredSeries'
+// import Favorite from '../components/Favorite'
+// import {WatchedList} from '../components/WatchedList'
+//import Footer from '../components/Footer'
 import { useState, useEffect} from 'react'
-import {Admin} from './Components/Admin'
+//import {Admin} from '../components/Admin'
 import axios from 'axios';
-import Layout from './layout/layout';
 
 
 /* -------------------------------------------------------------------------- */
@@ -38,13 +43,7 @@ const App = () => {
   // })
 
   //calling the json file using axios===================================
-  const [movies, setMovies] = useState([])
-  useEffect(()=>{
-    axios.get('https://movieappl-default-rtdb.firebaseio.com/posts.json')
-    .then( response => {setMovies(response.data)
-                        console.log('realtime database', response.data)})
-    .catch( error => console.log(error))
-  },[])
+
 
 
    //value of the search input=================================================
@@ -103,19 +102,21 @@ const App = () => {
 /* -------------------------------- RENDERING ------------------------------- */
   return (
     <Layout>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
+      <MoviesProvider>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          
 
-        
-        {/* <Menu favorite={favorite} getSearchInput={getSearchInput}/> */}
-        {/* <Route exact path="/"><HomePage movies={movies} searchInput = {searchInput} getFavoriteValue={getFavoriteValue}  getWatchedList={getWatchedList}/></Route> */}
-        {/* <Route path="/Movies"><FilteredMovies searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
-        <Route path="/Series"><FilteredSeries searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
-        <Route path="/WatchedList"><WatchedList searchInput={searchInput} watchedList={watchedList} removeFromWatchedlist={removeFromWatchedlist}/></Route>
-        <Route path="/Favorite"><Favorite searchInput={searchInput} favoriteValue={favoriteValue} getFavoriteValue={getFavoriteValue} removeFromWishlist={removeFromWishlist} removeAllWishlist={removeAllWishlist}/></Route>
-        <Route path="/admin"><Admin movies={movies} searchInput={searchInput}/></Route> */}
-      </Routes>
-      <Footer/>
+          
+          {/* <Menu favorite={favorite} getSearchInput={getSearchInput}/> */}
+          {/* <Route exact path="/"><HomePage movies={movies} searchInput = {searchInput} getFavoriteValue={getFavoriteValue}  getWatchedList={getWatchedList}/></Route> */}
+          {/* <Route path="/Movies"><FilteredMovies searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
+          <Route path="/Series"><FilteredSeries searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
+          <Route path="/WatchedList"><WatchedList searchInput={searchInput} watchedList={watchedList} removeFromWatchedlist={removeFromWatchedlist}/></Route>
+          <Route path="/Favorite"><Favorite searchInput={searchInput} favoriteValue={favoriteValue} getFavoriteValue={getFavoriteValue} removeFromWishlist={removeFromWishlist} removeAllWishlist={removeAllWishlist}/></Route>
+          <Route path="/admin"><Admin movies={movies} searchInput={searchInput}/></Route> */}
+        </Routes>
+      </MoviesProvider>
     </Layout>
   );
 }

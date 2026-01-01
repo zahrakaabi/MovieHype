@@ -1,0 +1,60 @@
+@use '../../styles/variables.scss' as vars; 
+
+.movie {
+    max-width: 20rem;
+
+    &__img {
+        border-radius: 10px;
+    }
+
+    &__title {
+        margin-top: 1rem;
+        font: normal 500 1.6rem sans-serif;
+        color: vars.$clr-primary-light;
+    }
+
+    &__year {
+        margin-top: 1rem;
+        font: normal 400 1.2rem sans-serif;
+        color: #515056;
+    }
+
+    &__icons,
+    &__rating {
+        i {
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+    }
+
+    &__icons {
+        margin-top: 1rem;
+        color: #515056;
+
+        button {
+            border: none;
+            background: transparent;
+
+            &:hover,
+            &:focus,
+            &:active,
+            &:focus-visible {
+                i {
+                    color: vars.$clr-secondary;
+                }
+            }
+            
+            i { color: #515056 }
+        }
+    }
+
+    &__rating {
+        margin-left: .5rem;
+        gap: .5rem;
+        color: #e2bc29;
+
+        span {
+            font: normal 400 1.2rem sans-serif;
+        }
+    }
+}

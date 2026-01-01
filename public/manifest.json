@@ -1,6 +1,6 @@
 { 
-  "name": "Movie App",
-  "short_name": "Movie App",
+  "name": "movieHype",
+  "short_name": "movieHype",
   "theme_color": "#06111a",
   "background_color": "#06111a",
   "display": "standalone",
@@ -8,7 +8,7 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "maskable.png",
+      "src": "maskable_icon.png",
       "sizes": "196x196",
       "type": "image/png",
       "purpose": "any maskable"

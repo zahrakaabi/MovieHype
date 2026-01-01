@@ -1,25 +1,6 @@
 {
   "posts": [
     {
-      "id": 1,
-      "Title": "Avatar",
-      "Year": "2007",
-      "Runtime": "101 min",
-      "Genre": "Action, Adventure, Fantasy",
-      "Actors": "https://i.pinimg.com/736x/0c/4f/8f/0c4f8fe58a8f06bdd7e63550aa7bf338.jpg",
-      "Director": "Francis Lawrence",
-      "Plot": "Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure.",
-      "Language": "English",
-      "Country": "USA",
-      "Awards": "9 wins & 21 nominations.",
-      "Poster": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/Avatar-Teaser-Poster.jpg/220px-Avatar-Teaser-Poster.jpg",
-      "Metascore": "65",
-      "imdbRating": "7.2",
-      "imdbVotes": "533,874",
-      "Type": "movie",
-      "Rate": "6.4"
-    },
-    {
       "id": 2,
       "Title": "I Am Legend",
       "Year": "2007",

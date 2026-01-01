@@ -5,10 +5,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import * as serviceWorker from "./serviceWorkerRegistration";
+import * as serviceWorker from "../public/serviceWorkerRegistration";
 
 // UI Local Components
-import App from "./App";
+import App from "./app/App";
 
 /* -------------------------------------------------------------------------- */
 /*                               INDEX COMPONENT                              */

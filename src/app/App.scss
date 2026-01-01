@@ -19,6 +19,11 @@ body {
   padding-right: 10%;
 }
 
+.seperation {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -76,12 +81,25 @@ a {
   height: 100%;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cover {
+  width: 100%;
+  object-fit: cover;
+}
+
 .m-auto {
   margin: auto;
 }
 
 .mb-1 {
   margin-bottom: 1.5rem;
+}
+
+.transition {
+  transition: all 0.3s ease-in-out;
 }
 
 
@@ -178,59 +196,6 @@ body{
 }
 
 
-
-
-
-
-
-
-
-/*cards===
-===================================================*/
-.cards{
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-left: 5%;
-  margin-right: 5%;
-  cursor: pointer;
-}
-.card-body{
-  padding-left: 0 !important;
-}
-.movie{
-  border: none !important;
-  background:none !important;
-  width:15rem
-}
-.img{
-  border-radius: 10px !important;
-}
-.movie--title{
-  font-size: 1rem !important;
-  color: var(--clr-primary-light);
-}
-.movie--icons{
-  color: #515056 !important;
-  margin-left: 38% !important;
-  font-size: 0.8rem !important;
-}
-.movie--icons span:first-child:hover,
-.movie--icons span:nth-child(2):hover{
-  color: var(--clr-secondary-redish) !important;
-}
-
-.movie--icons span:nth-child(3),
-.movie--icons span:last-child{
-  color: #e2bc29 !important;
-}
-.movie--icons span{
-  color: #515056 !important;
-  margin-left: 10px !important;
-}
-.text-movie{
-  color: #515056 !important;
-}
 
 
 
