@@ -2,6 +2,7 @@
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
 // UI Local Components
+import Footer from "./footer";
 import Header from "./header";
 
 /* -------------------------------------------------------------------------- */
@@ -11,11 +12,11 @@ function Layout({ children }) {
 /* -------------------------------- RENDERING ------------------------------- */
   return (
     <>
-        <Header />
-        <main>
-          {children}
-        </main>
-        {/* <Footer /> */}
+      <Header />
+      <main>
+        {children}
+      </main>
+      <Footer />
     </>
   )
 };

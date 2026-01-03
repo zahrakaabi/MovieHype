@@ -17,7 +17,6 @@ import './App.scss';
 
 
 
-// import Menu from '../components/Navbar'
 // import FilteredMovies from '../components/FilteredMovies'
 // import {FilteredSeries} from '../components/FilteredSeries'
 // import Favorite from '../components/Favorite'
@@ -41,16 +40,6 @@ const App = () => {
   //   .then(response => response.json())
   //   .then(movies=>setMovies(movies))
   // })
-
-  //calling the json file using axios===================================
-
-
-
-   //value of the search input=================================================
-   const [searchInput, setSearchInput] = useState("")
-   const getSearchInput = (event) =>{
-      setSearchInput(event.target.value)
-   }
 
   //increment the wishlist==============================================
   const [favorite, setFavorite] = useState(0)
@@ -108,8 +97,6 @@ const App = () => {
           
 
           
-          {/* <Menu favorite={favorite} getSearchInput={getSearchInput}/> */}
-          {/* <Route exact path="/"><HomePage movies={movies} searchInput = {searchInput} getFavoriteValue={getFavoriteValue}  getWatchedList={getWatchedList}/></Route> */}
           {/* <Route path="/Movies"><FilteredMovies searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
           <Route path="/Series"><FilteredSeries searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
           <Route path="/WatchedList"><WatchedList searchInput={searchInput} watchedList={watchedList} removeFromWatchedlist={removeFromWatchedlist}/></Route>

@@ -29,6 +29,12 @@ a {
   color: inherit;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .flex {
   display: flex;
 }
@@ -123,51 +129,6 @@ body{
   top: 15px !important;
   right: 7%;
 }
-
-
-
-
-
-/*Footer===
-===================================================*/
-.footer{
-  padding: 5% 13%;
-  margin-top: 100px;
-  border-top: 1px solid lightgray;
-}
-.footer h6{
-  margin-top: 20px;
-  margin-left: 20%;
-}
-
-.footer h5, .footer h6{
-  color: rgb(160, 160, 160);
-}
-.footer h5{
-  margin-left: 4%;
-  margin-bottom: 30px;
-}
-.footer select{
-  margin-top: 20px;
-  margin-left: 20%;
-  padding: 10px 20px;
-  background: none;
-  color: var(--clr-primary-light);
-  border-color: var(--clr-primary-light);
-}
-
-.footer ul li {
-  list-style: none;
-}
-.footer .link{
-  text-decoration: none;
-  color: var(--clr-primary-light);
-  cursor: pointer;
-}
-.fooetr .link:hover{
-  color: var(--clr-primary-light);
-}
-
 
 
 /*favorite page======

@@ -1,0 +1,41 @@
+@use '../../styles/variables.scss' as vars;
+
+.footer {
+  padding: 3rem 0;
+  border-top: 1px solid lightgray;
+
+  h5 {
+    margin-bottom: 3rem;
+    font: normal 400 1.6rem sans-serif;
+    color: rgb(160, 160, 160);
+  }
+
+  li {
+    margin-bottom: .5rem;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        transform: translateX(5px);
+    }
+
+    .link {
+      font: normal 400 1.4rem sans-serif;
+      color: vars.$clr-primary-light;
+    }
+  }
+
+  select{
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: none;
+    color: vars.$clr-primary-light;
+    border-color: vars.$clr-primary-light;
+    font: normal 400 1.4rem sans-serif;
+  }
+
+  h6 {
+    margin-top: 1rem;
+    font: normal 400 1.4rem sans-serif;
+    color: rgb(160, 160, 160);
+  }
+}
