@@ -33,8 +33,6 @@ function Header() {
                 </Link>
 
                 <div className="links flex flex-wrap items-center gap-4">
-                    <Link to="/films">Films</Link>
-                    <Link to="/series">Series</Link>
                     <Form className="flex">
                         <FormControl type="text" placeholder="Search" value={search} onChange={getSearchInput} />
                         <Button className="cursor-pointer" variant="outline-secondary">

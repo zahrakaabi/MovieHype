@@ -33,8 +33,8 @@ function MovieCard({ movie }) {
                 <button type="button" title="Add to favorites" aria-label="Add to favorites">
                     <span><i className="fas fa-heart transition"></i></span>
                 </button>
-                <button type="button" title="View details" aria-label="View details">
-                    <span><i className="fas fa-eye transition"></i></span>
+                <button type="button" title="View details" aria-label="View details" onClick={viewMovie.onTrue}>
+                    <span><i className="fas fa-eye transition" style={{ color: viewMovie.value ? 'rgb(202, 1, 1)' : '#515056'}}></i></span>
                 </button>
                 <div className="movie__rating flex items-center cursor-pointer">
                     <span><i className="fas fa-star transition"></i></span>
