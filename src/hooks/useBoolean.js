@@ -1,28 +1,36 @@
 /* -------------------------------------------------------------------------- */
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
-// Custom Hooks & Context
-import { useMovies } from "../../../hooks";
-
-// UI Local Componsnts
-import { MovieCard } from "../../../Components";
-
-// Styles
-import './index.scss';
+// Packages
+import { useCallback, useState } from "react";
 
 /* -------------------------------------------------------------------------- */
-/*                          MOVIES SECTION COMPONENT                          */
+/*                           useBoolean CUSTOM HOOK                           */
 /* -------------------------------------------------------------------------- */
-function MoviesSection() {
+function useBoolean(defaultValue) {
 /* ---------------------------------- HOOKS --------------------------------- */
-  const { filteredMovies } = useMovies();
+  const [value, setValue] = useState(!!defaultValue);
+
+  const onTrue = useCallback(() => {
+    setValue(true);
+  }, []);
+
+  const onFalse = useCallback(() => {
+    setValue(false);
+  }, []);
+
+  const onToggle = useCallback(() => {
+    setValue((prev) => !prev);
+  }, []);
 
 /* -------------------------------- RENDERING ------------------------------- */
-  return (
-    <div className="movies-container wrapper seperation flex flex-wrap justify-center">
-      {filteredMovies?.map((movie) => <MovieCard key={movie.id} movie={movie} /> )}
-    </div>
-  )
+  return {
+    value,
+    onTrue,
+    onFalse,
+    onToggle,
+    setValue,
+  };
 };
 
-export default MoviesSection;
+export default useBoolean;
