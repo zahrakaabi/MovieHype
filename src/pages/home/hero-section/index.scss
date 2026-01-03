@@ -1,7 +1,8 @@
 @use '../../../styles/variables.scss' as vars; 
 
 .hero-section {
-    min-height: 100vh;
+    min-height: calc(100vh - vars.$header-height);
+    padding-top: vars.$header-height;
     background-image: url(../../../assets/images/witcher.jpg);
     background-size: cover;
     background-position:center;
@@ -164,7 +165,7 @@
     .social--media {
         position: absolute;
         right: 10%;
-        top: 0;
+        top: vars.$header-height;
         writing-mode: vertical-rl;
         text-orientation: mixed;
         color: vars.$clr-primary-light;

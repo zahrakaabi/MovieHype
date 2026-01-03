@@ -1,2 +1,1 @@
-export { default as MoviesProvider} from './moviesContext';
-export { MoviesContext } from './moviesContext';
+export { default as MoviesProvider, MoviesContext } from './moviesContext';

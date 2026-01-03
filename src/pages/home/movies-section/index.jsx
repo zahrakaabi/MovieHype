@@ -1,11 +1,8 @@
 /* -------------------------------------------------------------------------- */
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
-// Packages
-import { useContext } from "react";
-
-// Context
-import { MoviesContext } from "../../../context";
+// Custom Hooks & Context
+import { useMovies } from "../../../hooks";
 
 // UI Local Componsnts
 import { MovieCard } from "../../../Components";
@@ -18,12 +15,12 @@ import './index.scss';
 /* -------------------------------------------------------------------------- */
 function MoviesSection() {
 /* ---------------------------------- HOOKS --------------------------------- */
-  const { movies, loading } = useContext(MoviesContext);
+  const { filteredMovies } = useMovies();
 
 /* -------------------------------- RENDERING ------------------------------- */
   return (
     <div className="movies-container container seperation flex flex-wrap justify-center">
-      {movies?.map((movie) => <MovieCard key={movie.Title} movie={movie} /> )}
+      {filteredMovies?.map((movie) => <MovieCard key={movie.Title} movie={movie} /> )}
     </div>
   )
 };

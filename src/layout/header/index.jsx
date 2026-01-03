@@ -2,37 +2,52 @@
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
 // Packages
+import { Link } from "react-router-dom";
 
 // UI Lib Components
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Form, FormControl, Navbar } from "react-bootstrap";
+
+// Hooks & Context
+import { useMovies } from "../../hooks";
+
+// Styles
+import './index.scss';
 
 /* -------------------------------------------------------------------------- */
 /*                              HEADER COMPONENT                              */
 /* -------------------------------------------------------------------------- */
 function Header() {
+/* ---------------------------------- HOOKS --------------------------------- */
+    const { search, setSearch } = useMovies();
+
+    const getSearchInput = (e) => {
+        setSearch(e.target.value);
+    };
+
 /* -------------------------------- RENDERING ------------------------------- */
     return (        
-        <Navbar expand="lg" fixed="top">
-            <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar className="navbar" expand="lg" fixed="top">
+            <div className="wrapper flex justify-between items-center w-full">
+                <Link to="/" className="logo">
+                    MovieHype
+                </Link>
 
-                {/*<Form inline>
-                    <FormControl type="text" placeholder="SEARCH" onChange={getSearchInput}/>
-                    <Button variant="outline-secondary"><i class="fas fa-search  "></i></Button>
-                </Form>*/}
-                {/*<Link className="heart" to="/Favorite">
-                        <i class="fas fa-heart"></i>
-                        <span className="favorite--value">{favorite}</span>
+                <div className="links flex flex-wrap items-center gap-4">
+                    <Link to="/films">Films</Link>
+                    <Link to="/series">Series</Link>
+                    <Form className="flex">
+                        <FormControl type="text" placeholder="Search" value={search} onChange={getSearchInput} />
+                        <Button className="cursor-pointer" variant="outline-secondary">
+                            <i className="fas fa-search"></i>
+                        </Button>
+                    </Form>
+                    <Link to="/" className="favorites flex items-center pos-r">
+                        <i className="fas fa-heart"></i>
+                        <span className="flex items-center justify-center">5</span>
                     </Link>
-                <SignUp/>*/}
-                <Navbar.Collapse className="justify-content-between" id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="/films" className="linked--page">Films</Nav.Link>
-                        <Nav.Link href="/series" className="linked--page">Series</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
+                </div>
+            </div>
+            {/*<SignUp/>*/}
         </Navbar>
     )
 };

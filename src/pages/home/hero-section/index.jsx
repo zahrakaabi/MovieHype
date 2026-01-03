@@ -12,7 +12,7 @@ import './index.scss';
 function HeroSection() {
 /* -------------------------------- RENDERING ------------------------------- */
     return (
-        <div className="hero-section container w-full flex items-center">
+        <div className="hero-section wrapper w-full flex items-center">
             <div className="movie--cover w-full">
                 <div className="movie--cover__overview flex flex-col items-end mb-1">
                     <h1 className="title w-full">THE <br/> WITCHER</h1>

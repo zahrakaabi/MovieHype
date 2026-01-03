@@ -1,0 +1,59 @@
+@use '../../styles/variables.scss' as vars;
+
+.navbar {
+    min-height: vars.$header-height;
+
+    .logo {
+        color: vars.$clr-primary-light;
+        font: normal 500 2rem sans-serif;
+    }
+
+    .links {
+        a {
+            color: vars.$clr-primary-light;
+            font: normal 500 1.4rem sans-serif;
+        }
+
+        form {
+            border-bottom: solid 1px vars.$clr-primary-light;
+
+            input,
+            button {
+                border: none;
+                border-radius: 0;
+                background: transparent;
+                color: vars.$clr-primary-light;
+            }
+
+            input {
+                font-size: 1.2rem;
+
+                &::placeholder {
+                    color: vars.$clr-primary-light;
+                    opacity: 0.5;
+                }
+            }
+
+            button {
+                padding-bottom: .5rem;
+            }
+        }
+
+        .favorites {
+            span {
+                background-color: vars.$clr-secondary;
+                width: 1.7em;
+                aspect-ratio: 1 / 1;
+                border-radius: 50% ;
+
+                position: absolute;
+                top: -5px;
+                right: -10px;
+                z-index: 1;
+
+                color: vars.$clr-primary-light;
+                font: normal 500 .8rem sans-serif;
+            }
+        }
+    }
+}

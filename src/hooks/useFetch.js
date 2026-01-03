@@ -2,7 +2,6 @@
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
 // Packages
-import axios from "axios";
 import { useEffect, useState } from "react";
 import axiosInstance from "../lib/axios";
 
@@ -10,7 +9,7 @@ import axiosInstance from "../lib/axios";
 /*                            useFetch CUSTOM HOOK                            */
 /* -------------------------------------------------------------------------- */
 //@TO DO : Use this useFetch<T>(url: string) with Typescript
-export function useFetch(url) {
+function useFetch(url) {
 /* ---------------------------------- HOOKS --------------------------------- */
   const [data, setData] = useState(null); //<T | null>
   const [loading, setLoading] = useState(true);
@@ -45,3 +44,5 @@ export function useFetch(url) {
 /* -------------------------------- RENDERING ------------------------------- */
   return { data, loading, error };
 };
+
+export default useFetch;

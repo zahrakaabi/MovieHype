@@ -101,8 +101,8 @@ const App = () => {
   
 /* -------------------------------- RENDERING ------------------------------- */
   return (
-    <Layout>
-      <MoviesProvider>
+    <MoviesProvider>
+      <Layout>
         <Routes>
           <Route exact path="/" element={<Home />} />
           
@@ -116,8 +116,8 @@ const App = () => {
           <Route path="/Favorite"><Favorite searchInput={searchInput} favoriteValue={favoriteValue} getFavoriteValue={getFavoriteValue} removeFromWishlist={removeFromWishlist} removeAllWishlist={removeAllWishlist}/></Route>
           <Route path="/admin"><Admin movies={movies} searchInput={searchInput}/></Route> */}
         </Routes>
-      </MoviesProvider>
-    </Layout>
+      </Layout>
+    </MoviesProvider>
   );
 }
 

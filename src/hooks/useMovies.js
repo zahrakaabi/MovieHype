@@ -1,23 +1,18 @@
 /* -------------------------------------------------------------------------- */
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
-// UI Local Components
-import Header from "./header";
+// Packages
+import { useContext } from "react";
+
+// Context
+import { MoviesContext } from "../context";
 
 /* -------------------------------------------------------------------------- */
-/*                              LAYOUT COMPONENT                              */
+/*                               useMovies HOOK                               */
 /* -------------------------------------------------------------------------- */
-function Layout({ children }) {
+function useMovies() {
 /* -------------------------------- RENDERING ------------------------------- */
-  return (
-    <>
-        <Header />
-        <main>
-          {children}
-        </main>
-        {/* <Footer /> */}
-    </>
-  )
+    return useContext(MoviesContext);
 };
 
-export default Layout;
+export default useMovies;
