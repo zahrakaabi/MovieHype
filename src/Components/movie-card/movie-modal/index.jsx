@@ -23,8 +23,10 @@ function MovieModal({ movie, open, onClose }) {
             <h4>{Title}</h4>
         </div>
         <div className="movie-details">
-            {/* {Genre} turn it to array */}
-            <p>{Plot}</p>
+          <ul className="flex gap-2">
+            {Genre.split(',').map((genre, index) => <li key={index}>{genre}</li>)}
+          </ul>
+          <p>{Plot}</p>
         </div>
       </Modal.Body>
       <Modal.Footer className="flex justify-start">

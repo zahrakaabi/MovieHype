@@ -50,10 +50,13 @@
                     color: vars.$clr-primary-light;
 
                     ul li {
-                        background-color: rgba(255, 255, 255, 0.7);
+                        border-radius: 5rem;
+                        padding: .5rem 1rem;
+                        background-color: #0e2436;
                     }
 
                     p {
+                        margin-top: 1.5rem;
                         font: normal 400 1.2rem sans-serif;
                     }
                 }

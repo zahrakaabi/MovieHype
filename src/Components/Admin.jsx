@@ -26,8 +26,7 @@ export const Admin = ({movies, searchInput}) => {
   const handleSubmit = async (e) => {
   e.preventDefault()
       await axios.post(`https://movieappl-default-rtdb.firebaseio.com/posts.json`,input)
-      .then(response => {console.log(response)
-                      console.log(response.data)})
+      .then(response => {console.log(response.data)})
       .then(response => refresh())
       .catch(error => console.log(error))
   }
@@ -39,7 +38,7 @@ export const Admin = ({movies, searchInput}) => {
     let confirmDelete = window.confirm("Are you sure to delete this movie?")
         if (confirmDelete) {
         await axios.delete(`https://movieappl-default-rtdb.firebaseio.com/posts/${id}.json`)
-        .then(response => {console.log(response); console.log(response.data)})
+        .then(response => {console.log(response.data)})
         .then(response => refresh())
         .catch(error => console.log(error))
         } 

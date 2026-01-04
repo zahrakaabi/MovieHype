@@ -9,7 +9,7 @@ import Layout from '../layout/layout';
 import { Home } from '../pages';
 
 // Context
-import { MoviesProvider } from "../context";
+import { FavoritesProvider, MoviesProvider } from "../context";
 
 // Styles
 import './App.scss';
@@ -91,19 +91,21 @@ const App = () => {
 /* -------------------------------- RENDERING ------------------------------- */
   return (
     <MoviesProvider>
-      <Layout>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          
+      <FavoritesProvider>
+        <Layout>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            
 
-          
-          {/* <Route path="/Movies"><FilteredMovies searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
-          <Route path="/Series"><FilteredSeries searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
-          <Route path="/WatchedList"><WatchedList searchInput={searchInput} watchedList={watchedList} removeFromWatchedlist={removeFromWatchedlist}/></Route>
-          <Route path="/Favorite"><Favorite searchInput={searchInput} favoriteValue={favoriteValue} getFavoriteValue={getFavoriteValue} removeFromWishlist={removeFromWishlist} removeAllWishlist={removeAllWishlist}/></Route>
-          <Route path="/admin"><Admin movies={movies} searchInput={searchInput}/></Route> */}
-        </Routes>
-      </Layout>
+            
+            {/* <Route path="/Movies"><FilteredMovies searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
+            <Route path="/Series"><FilteredSeries searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
+            <Route path="/WatchedList"><WatchedList searchInput={searchInput} watchedList={watchedList} removeFromWatchedlist={removeFromWatchedlist}/></Route>
+            <Route path="/Favorite"><Favorite searchInput={searchInput} favoriteValue={favoriteValue} getFavoriteValue={getFavoriteValue} removeFromWishlist={removeFromWishlist} removeAllWishlist={removeAllWishlist}/></Route>
+            <Route path="/admin"><Admin movies={movies} searchInput={searchInput}/></Route> */}
+          </Routes>
+        </Layout>
+      </FavoritesProvider>
     </MoviesProvider>
   );
 }

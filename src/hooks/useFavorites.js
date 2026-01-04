@@ -5,14 +5,14 @@
 import { useContext } from "react";
 
 // Context
-import { MoviesContext } from "../context";
+import { FavoritesContext } from "../context";
 
 /* -------------------------------------------------------------------------- */
-/*                            useMovies CUSTOM HOOK                           */
+/*                          useFavorites CUSTOM HOOK                          */
 /* -------------------------------------------------------------------------- */
-function useMovies() {
+function useFavorites() {
 /* -------------------------------- RENDERING ------------------------------- */
-    return useContext(MoviesContext);
+    return useContext(FavoritesContext);
 };
 
-export default useMovies;
+export default useFavorites;
