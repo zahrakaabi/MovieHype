@@ -4,48 +4,33 @@
 // Packages
 import { createContext, useMemo, useState } from "react";
 
-// Lib & Custom Hooks
-import { useFetch } from "../hooks";
-import { endpoints } from "../lib/axios";
-
 /* -------------------------------------------------------------------------- */
-/*                            CREATE MOVIES CONTEXT                           */
+/*                            CREATE SEARCH CONTEXT                           */
 /* -------------------------------------------------------------------------- */
-export const MoviesContext = createContext({
-    movies: [],
-    loading: false,
-    error: null,
+export const SearchContext = createContext({
     search: "",
-    setSearch: () => {},
-    filteredMovies: [],
+    setSearch: () => {}
 });
 
 /* -------------------------------------------------------------------------- */
-/*                               MOVIES PROVIDER                              */
+/*                               SEARCH PROVIDER                              */
 /* -------------------------------------------------------------------------- */
-function MoviesProvider({ children }) {
+function SearchProvider({ children }) {
 /* ---------------------------------- HOOKS --------------------------------- */
     const [search, setSearch] = useState("");
-    const { data: movies, error, loading } = useFetch(endpoints.movies.list);
-
-    const filteredMovies = useMemo(() => {
-        return movies?.filter((movie) =>
-            movie.Title.toLowerCase().includes(search.toLowerCase())
-        );
-    }, [movies, search]);
 
 /* --------------------------------- MEMOIZE --------------------------------- */
     const value = useMemo(
-        () => ({ movies, error, loading, search, setSearch, filteredMovies }),
-        [movies, error, loading, search, filteredMovies]
+        () => ({ search, setSearch }),
+        [search]
     );
 
 /* -------------------------------- RENDERING ------------------------------- */
     return (
-        <MoviesContext.Provider value={value}>
+        <SearchContext.Provider value={value}>
             {children}
-        </MoviesContext.Provider>
+        </SearchContext.Provider>
     )
 };
 
-export default MoviesProvider;
+export default SearchProvider;

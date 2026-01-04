@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { Button, Form, FormControl, Navbar } from "react-bootstrap";
 
 // Hooks & Context
-import { useFavorites, useMovies } from "../../hooks";
+import { useFavorites, useSearch } from "../../hooks";
 
 // Styles
 import './index.scss';
@@ -18,7 +18,7 @@ import './index.scss';
 /* -------------------------------------------------------------------------- */
 function Header() {
 /* ---------------------------------- HOOKS --------------------------------- */
-    const { search, setSearch } = useMovies();
+    const { search, setSearch } = useSearch();
     const { favoritesCount } = useFavorites();
 
     const getSearchInput = (e) => {
@@ -41,7 +41,7 @@ function Header() {
                             <i className="fas fa-search"></i>
                         </Button>
                     </Form>
-                    <Link to="/" className="favorites flex items-center pos-r">
+                    <Link to="/favorites" className="favorites flex items-center pos-r">
                         <i className="fas fa-heart"></i>
                         <span className="flex items-center justify-center">{favoritesCount}</span>
                     </Link>

@@ -5,14 +5,14 @@
 import { useContext } from "react";
 
 // Context
-import { MoviesContext } from "../context";
+import { SearchContext } from "../../context";
 
 /* -------------------------------------------------------------------------- */
 /*                            useMovies CUSTOM HOOK                           */
 /* -------------------------------------------------------------------------- */
-function useMovies() {
+function useSearch() {
 /* -------------------------------- RENDERING ------------------------------- */
-    return useContext(MoviesContext);
+    return useContext(SearchContext);
 };
 
-export default useMovies;
+export default useSearch;

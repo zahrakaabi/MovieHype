@@ -4,35 +4,32 @@
 // Packages
 import { useMemo } from "react";
 
-// Custom Hooks & Context
-import { useMovies, useSearch } from "../../../hooks";
+// UI Local Components
+import { FavoriteMovieCard } from "../../Components";
 
-// UI Local Componsnts
-import { MovieCard } from "../../../Components";
-
-// Styles
-import './index.scss';
+// Custom Hooks
+import { useFavorites, useSearch } from "../../hooks";
 
 /* -------------------------------------------------------------------------- */
-/*                          MOVIES SECTION COMPONENT                          */
+/*                               FAVORITES PAGE                               */
 /* -------------------------------------------------------------------------- */
-function MoviesSection() {
+function Favorites() {
 /* ---------------------------------- HOOKS --------------------------------- */
   const { search } = useSearch();
-  const { movies } = useMovies();
+  const { favorites } = useFavorites();
   
-  const filteredMovies = useMemo(() => {
-    return movies?.filter((movie) =>
+  const filteredFavorites = useMemo(() => {
+    return Object.values(favorites).filter((movie) =>
       movie.Title.toLowerCase().includes(search.toLowerCase())
     );
-  }, [movies, search]);
+  }, [favorites, search]);
 
 /* -------------------------------- RENDERING ------------------------------- */
   return (
-    <div className="movies-container wrapper seperation flex flex-wrap justify-center">
-      {filteredMovies?.map((movie) => <MovieCard key={movie.id} movie={movie} /> )}
+    <div className="favorites wrapper seperation">
+      {filteredFavorites.map((movie) => <FavoriteMovieCard key={movie.id} movie={movie} />)}
     </div>
   )
 };
 
-export default MoviesSection;
+export default Favorites;

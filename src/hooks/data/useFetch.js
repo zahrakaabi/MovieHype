@@ -3,7 +3,7 @@
 /* -------------------------------------------------------------------------- */
 // Packages
 import { useEffect, useState } from "react";
-import axiosInstance from "../lib/axios";
+import axiosInstance from "../../lib/axios";
 
 /* -------------------------------------------------------------------------- */
 /*                            useFetch CUSTOM HOOK                            */

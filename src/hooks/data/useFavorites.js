@@ -5,7 +5,7 @@
 import { useContext } from "react";
 
 // Context
-import { FavoritesContext } from "../context";
+import { FavoritesContext } from "../../context";
 
 /* -------------------------------------------------------------------------- */
 /*                          useFavorites CUSTOM HOOK                          */

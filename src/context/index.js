@@ -1,2 +1,3 @@
-export { default as MoviesProvider, MoviesContext } from './moviesContext';
-export { default as FavoritesProvider, FavoritesContext } from './favoritesContext';
+export { default as MoviesProvider, MoviesContext } from './data/moviesContext';
+export { default as FavoritesProvider, FavoritesContext } from './data/favoritesContext';
+export { default as SearchProvider, SearchContext } from './ui/searchContext';

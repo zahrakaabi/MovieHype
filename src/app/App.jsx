@@ -6,10 +6,10 @@ import { Route, Routes } from "react-router-dom";
 
 // UI Local Components
 import Layout from '../layout/layout';
-import { Home } from '../pages';
+import { Favorites, Home } from '../pages';
 
 // Context
-import { FavoritesProvider, MoviesProvider } from "../context";
+import { FavoritesProvider, MoviesProvider, SearchProvider } from "../context";
 
 // Styles
 import './App.scss';
@@ -90,23 +90,19 @@ const App = () => {
   
 /* -------------------------------- RENDERING ------------------------------- */
   return (
-    <MoviesProvider>
-      <FavoritesProvider>
-        <Layout>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            
-
-            
-            {/* <Route path="/Movies"><FilteredMovies searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
-            <Route path="/Series"><FilteredSeries searchInput={searchInput} movies={movies} getFavoriteValue={getFavoriteValue}/></Route>
-            <Route path="/WatchedList"><WatchedList searchInput={searchInput} watchedList={watchedList} removeFromWatchedlist={removeFromWatchedlist}/></Route>
-            <Route path="/Favorite"><Favorite searchInput={searchInput} favoriteValue={favoriteValue} getFavoriteValue={getFavoriteValue} removeFromWishlist={removeFromWishlist} removeAllWishlist={removeAllWishlist}/></Route>
-            <Route path="/admin"><Admin movies={movies} searchInput={searchInput}/></Route> */}
-          </Routes>
-        </Layout>
-      </FavoritesProvider>
-    </MoviesProvider>
+    <SearchProvider>
+      <MoviesProvider>
+        <FavoritesProvider>
+          <Layout>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route path="/favorites" element={<Favorites /> } />
+              {/* <Route path="/admin"><Admin movies={movies} searchInput={searchInput}/></Route> */}
+            </Routes>
+          </Layout>
+        </FavoritesProvider>
+      </MoviesProvider>
+    </SearchProvider>
   );
 }
 

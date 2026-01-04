@@ -1,0 +1,85 @@
+@use '../../styles/variables.scss' as vars; 
+
+.favorite-movie-card {
+    margin-bottom: 2rem;
+    
+    .img {
+        max-width: 22rem;
+        border-radius: 10px;
+    }
+
+    .content {
+        padding: 1.5rem 0;
+        $space: 1rem;
+
+        &__title {
+            margin-bottom: $space;
+            color: vars.$clr-primary-light;
+            font: normal 400 1.6rem sans-serif;
+        }
+
+        &__date-genre {
+            display: block;
+            margin-bottom: $space;
+            color:#2c4050;
+            font: normal 400 1.2rem sans-serif;
+        }
+
+        &__rating,
+        &__metascore {
+            span {
+                color:#2c4050;
+                font: normal 400 1.4rem sans-serif;
+            }
+        }
+
+        &__rating {
+            i { 
+                font-size: 1rem;
+                color: #e2bc29;
+            }
+        }
+
+        &__metascore {
+            .styled {
+                font-size: 1.2rem;
+                color: #e2bc29;
+            }
+        }
+
+        &__actors {
+            margin-top: $space;
+            margin-bottom: $space;
+
+            span {
+                color: #a5baca;
+                font: normal 400 1.4rem sans-serif;
+            }
+
+            li {
+                padding: .5rem 1rem;
+                border-radius: 5rem;
+                background-color:#2c4050;
+                color: vars.$clr-bg-dark;
+                font: normal 400 1.2rem sans-serif;
+            }
+        }
+
+        &__description {
+            color:#2c4050;
+            max-width: 60ch;
+            font: normal 400 1.4rem sans-serif;
+        }
+
+        &__remove {
+            margin-top: $space;
+            border: none;
+            border-radius: 10rem;
+            padding: 1rem 1.5rem;
+            background-color: vars.$clr-secondary;
+
+            color: vars.$clr-primary-light;
+            font: normal 400 1.2rem sans-serif;
+        }
+    }
+}

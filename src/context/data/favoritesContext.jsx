@@ -72,7 +72,7 @@ function FavoritesProvider({ children }) {
     addFavorite: (movie) => dispatch({ type: ACTIONS.ADD, payload: movie }),
     removeFavorite: (id) => dispatch({ type: ACTIONS.REMOVE, payload: id }),
     isFavorite: (id) => Boolean(state.items[id]),
-    favoritesCount: Object.keys(state.items).length
+    favoritesCount: Object.keys(state.items).length,
   };
 
 /* -------------------------------- RENDERING ------------------------------- */
