@@ -14,16 +14,16 @@
             font: normal 500 1.4rem sans-serif;
         }
 
+        input,
+        button {
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            color: vars.$clr-primary-light;
+        }
+
         form {
             border-bottom: solid 1px vars.$clr-primary-light;
-
-            input,
-            button {
-                border: none;
-                border-radius: 0;
-                background: transparent;
-                color: vars.$clr-primary-light;
-            }
 
             input {
                 font-size: 1.2rem;
@@ -54,6 +54,10 @@
                 color: vars.$clr-primary-light;
                 font: normal 500 .8rem sans-serif;
             }
+        }
+
+        .user {
+            i { font-size: 1.4rem; }
         }
     }
 }

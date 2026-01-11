@@ -113,6 +113,26 @@ ul {
   position: relative;
 }
 
+.form-label {
+  color: #fff;
+  font: normal 400 1.6rem sans-serif;
+}
+
+.form-control {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: .7rem 0 .7rem;
+  border-bottom: 1px solid #fff;
+  
+  color: #fff;
+  font: normal 400 1.6rem sans-serif;
+
+  &::placeholder {
+    color: #43505a;
+  }
+}
+
 
 
 

@@ -34,14 +34,14 @@ function MovieCard({ movie }) {
           <span className="movie__year">{Year}</span>
           <div className="movie__icons flex items-center">
             <button type="button" title="Add to favorites" aria-label="Add to favorites" onClick={toggleFavorite}>
-                <span><i className="fas fa-heart transition" style={{ color: favorite ? 'rgb(202, 1, 1)' : '#515056'}}></i></span>
+              <span><i className="fas fa-heart transition" style={{ color: favorite ? 'rgb(202, 1, 1)' : '#515056'}}></i></span>
             </button>
             <button type="button" title="View details" aria-label="View details" onClick={viewMovie.onTrue}>
-                <span><i className="fas fa-eye transition" style={{ color: viewMovie.value ? 'rgb(202, 1, 1)' : '#515056'}}></i></span>
+              <span><i className="fas fa-eye transition" style={{ color: viewMovie.value ? 'rgb(202, 1, 1)' : '#515056'}}></i></span>
             </button>
             <div className="movie__rating flex items-center cursor-pointer">
-                <span><i className="fas fa-star transition"></i></span>
-                <span>{Rate}</span>
+              <span><i className="fas fa-star transition"></i></span>
+              <span>{Rate}</span>
             </div>
           </div>
         </div>

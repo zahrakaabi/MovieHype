@@ -1,0 +1,63 @@
+@use '../../styles/variables.scss' as vars;
+
+.loginModal {
+    .modal-dialog {
+        .modal-content {
+            background-color: #0e2436;
+
+            .modal-header {
+                position: absolute;
+                right: 0;
+                z-index: 5;
+                border: none;
+
+                .btn-close {
+                    border: none;
+                    filter: invert(1);
+                }
+            }
+
+            .modal-body {
+                padding: 5rem 3rem 0 3rem;
+
+                form {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    
+                    button {
+                        border-color: #fff;
+                        padding: 1rem 2rem;
+                        background: #0e2436;
+                        font: normal 400 1.6rem sans-serif;
+                    }
+                }
+            }
+
+            .modal-footer {
+                padding: 0 3rem;
+                border-top: 0;
+
+                .auth-mode {
+                    padding: 3rem;
+
+                    span,
+                    button {
+                        font: normal 400 1.6rem sans-serif;
+                    }
+
+                    span {
+                        color: #fff;
+                    }
+
+                    button {
+                        color: #b6b6b6;
+                        text-decoration: underline;
+                        border: none;
+                        background: transparent;
+                    }
+                }
+            }
+        }
+    }
+}

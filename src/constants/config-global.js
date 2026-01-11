@@ -1,1 +1,1 @@
-export const HOST_API = 'http://localhost:3002';//process.env.REACT_PUBLIC_HOST_API;
+export const HOST_API = 'http://localhost:3002';//process.env.REACT_APP_HOST_API;

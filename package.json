@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",
     "@testing-library/user-event": "^14.6.1",
@@ -14,9 +15,11 @@
     "react-bootstrap": "^2.10.10",
     "react-confirm-alert": "^3.0.6",
     "react-dom": "^19.2.3",
+    "react-hook-form": "^7.70.0",
     "react-rater": "^6.0.5",
     "react-router-dom": "^7.11.0",
-    "web-vitals": "^5.1.0"
+    "web-vitals": "^5.1.0",
+    "yup": "^1.7.1"
   },
   "scripts": {
     "dev": "vite",

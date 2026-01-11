@@ -20,7 +20,7 @@ function MovieModal({ movie, open, onClose }) {
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
         <div className="movie-poster" style={{ backgroundImage: `url(${movie.Poster})` }}>
-            <h4>{Title}</h4>
+          <h4>{Title}</h4>
         </div>
         <div className="movie-details">
           <ul className="flex gap-2">
