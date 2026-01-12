@@ -131,6 +131,17 @@ ul {
   &::placeholder {
     color: #43505a;
   }
+
+  &:focus {
+    color: #fff;
+    background: transparent;
+  }
+}
+
+.invalid-feedback,
+.error {
+  margin-top: 1rem;
+  font: normal 400 1.4rem sans-serif;
 }
 
 

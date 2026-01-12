@@ -2,7 +2,7 @@
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
 // Packages
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -14,8 +14,9 @@ import { Button, Modal } from 'react-bootstrap';
 import AuthFields from './auth-form/authFields';
 import { FormProvider } from '../hook-form';
 
-// Hooks
+// Hooks & API
 import { useBoolean } from '../../hooks';
+import { supabase } from '../../api/supabaseClient';
 
 // Styles
 import './index.scss';
@@ -26,11 +27,16 @@ import './index.scss';
 function Auth({ open, onClose }) {
 /* ---------------------------------- HOOKS --------------------------------- */
   const isRegister = useBoolean();
+  const [authError, setAuthError] = useState(null);
 
 /* ------------------------ FORM VALIDATION WITH YUP ------------------------ */
   const NewAuthSchema = Yup.object().shape({
     email: Yup.string().email("Invalid e-mail").required("E-mail is required"),
-    password: Yup.string().required('Password is required'),
+    password: Yup.string()
+      .min(6, 'Password must be at least 6 characters')
+      .matches(/[A-Z]/, 'Must contain at least one uppercase letter')
+      .matches(/[0-9]/, 'Must contain at least one number')
+      .required('Password is required'),
     ...(isRegister.value && {
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("password")], "Passwords must match")
@@ -64,7 +70,24 @@ function Auth({ open, onClose }) {
   };
   
   const handleSend = handleSubmit(async (formData) => {
-    console.log('data', formData);
+    const { email, password } = formData;
+    if (isRegister) {
+      const { data, error } = await supabase.auth.signUp({email, password});
+      if (error) {
+        setAuthError(error.message);
+        return;
+      };
+      if (data.user) alert(`Welcome ${data.user.email}`);
+    } else {
+      const { data, error } = await supabase.auth.signInWithPassword({email, password});
+      if (error) {
+        setAuthError(error.message);
+        return;
+      };
+      if (data.user) alert(`Welcome ${data.user.email}`);
+    };
+    reset();
+    onClose();
   });
 
 /* -------------------------------- RENDERING ------------------------------- */
@@ -73,6 +96,7 @@ function Auth({ open, onClose }) {
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
        <FormProvider className="flex items-center flex-col" methods={methods} onSubmit={handleSend}>
+        {authError && <div className="mb-4 text-danger error">{authError}</div>}
         <AuthFields isRegister={isRegister.value} />
         <Button type="submit" disabled={isSubmitting}>{isRegister.value ? 'Create an account' : 'Login'}</Button>
        </FormProvider>
