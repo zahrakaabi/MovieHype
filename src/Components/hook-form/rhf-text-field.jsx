@@ -5,7 +5,8 @@
 import { Controller, useFormContext } from "react-hook-form";
 
 // UI Lib Components
-import { Form } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
+import { useState } from "react";
 
 /* -------------------------------------------------------------------------- */
 /*                          RHF YEXY FIELD COMPOENNT                          */
@@ -13,6 +14,9 @@ import { Form } from "react-bootstrap";
 function RHFTextField({type="text", label, name, placeholder}) {
 /* ---------------------------------- HOOKS --------------------------------- */
   const { control } = useFormContext();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const isPassword = type === "password";
 
 /* -------------------------------- RENDERING ------------------------------- */
   return (
@@ -20,16 +24,22 @@ function RHFTextField({type="text", label, name, placeholder}) {
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <Form.Group className="mb-5 w-full">
+        <Form.Group className="form-group mb-5 w-full">
           <Form.Label>{label}</Form.Label>
 
-          <Form.Control
-            {...field}
-            type={type}
-            placeholder={placeholder}
-            isInvalid={!!error}
-            {...(type === "number" && { valueAsNumber: true })}
-          />
+          <div className="flex">
+            <Form.Control
+              {...field}
+              type={isPassword ? (showPassword ? "text" : "password") : type}
+              placeholder={placeholder}
+              isInvalid={!!error}
+              {...(type === "number" && { valueAsNumber: true })}
+            />
+
+            {isPassword && <button className="toggle-password cursor-pointer" onClick={() => setShowPassword((prev) => !prev)}>
+              {showPassword ? <i className="fa fa-eye" /> : <i className="fa fa-eye-slash" />}
+            </button>}
+          </div>
 
           {error && <Form.Control.Feedback type="invalid">
             {error?.message}

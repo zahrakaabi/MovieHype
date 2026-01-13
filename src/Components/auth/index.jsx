@@ -41,6 +41,8 @@ function Auth({ open, onClose }) {
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("password")], "Passwords must match")
         .required("Confirm your password"),
+      firstName: Yup.string().required("First name is required"),
+      lastName: Yup.string()
     })
   });
 
@@ -48,7 +50,9 @@ function Auth({ open, onClose }) {
     () => ({
      email: "",
      password: "",
-     confirmPassword: ""
+     confirmPassword: "",
+     firstName: "",
+     lastName: ""
     })
   );
 
@@ -70,21 +74,29 @@ function Auth({ open, onClose }) {
   };
   
   const handleSend = handleSubmit(async (formData) => {
-    const { email, password } = formData;
+    const { firstName, lastName, email, password } = formData;
     if (isRegister) {
-      const { data, error } = await supabase.auth.signUp({email, password});
+      const { data, error } = await supabase.auth.signUp({
+        email, 
+        password,
+        options: {
+          data: {
+            firstName: firstName,
+            lastName: lastName,
+          },
+        },
+      });
       if (error) {
         setAuthError(error.message);
         return;
       };
-      if (data.user) alert(`Welcome ${data.user.email}`);
+      if (data.user) alert(`Welcome ${data.user.user_metadata.firstName} ${data.user.user_metadata.lastName}`);
     } else {
-      const { data, error } = await supabase.auth.signInWithPassword({email, password});
+      const { error } = await supabase.auth.signInWithPassword({email, password});
       if (error) {
         setAuthError(error.message);
         return;
       };
-      if (data.user) alert(`Welcome ${data.user.email}`);
     };
     reset();
     onClose();
@@ -92,7 +104,7 @@ function Auth({ open, onClose }) {
 
 /* -------------------------------- RENDERING ------------------------------- */
   return (
-    <Modal className="loginModal" show={open} onHide={onClose} size="md" aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal className="loginModal wrapper" show={open} onHide={onClose} size="md" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
        <FormProvider className="flex items-center flex-col" methods={methods} onSubmit={handleSend}>
@@ -103,16 +115,16 @@ function Auth({ open, onClose }) {
       </Modal.Body> 
       <Modal.Footer className="justify-center">
         <div className="auth-mode text-center">
-          <span>{isRegister.value 
+          <span>{!isRegister.value 
             ? "Don't have an account ?" 
             : "Already have an account ?"}
           </span> 
           <button className="cursor-pointer" 
           type="button"
-          title={isRegister ? "Register": "Login"}
-          aria-label={isRegister ? "Register": "Login"}
+          title={isRegister.value ? "Register": "Login"}
+          aria-label={isRegister.value ? "Register": "Login"}
           onClick={toggleAuthMode}>
-            {isRegister ? "Register": "Login"}
+            {!isRegister.value ? "Register": "Login"}
           </button>
         </div>
       </Modal.Footer>

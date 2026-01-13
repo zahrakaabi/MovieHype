@@ -113,35 +113,47 @@ ul {
   position: relative;
 }
 
-.form-label {
-  color: #fff;
-  font: normal 400 1.6rem sans-serif;
-}
-
-.form-control {
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  padding: .7rem 0 .7rem;
-  border-bottom: 1px solid #fff;
-  
-  color: #fff;
-  font: normal 400 1.6rem sans-serif;
-
-  &::placeholder {
-    color: #43505a;
-  }
-
-  &:focus {
+.form-group {
+  .form-label {
     color: #fff;
-    background: transparent;
+    font: normal 400 1.6rem sans-serif;
   }
-}
 
-.invalid-feedback,
-.error {
-  margin-top: 1rem;
-  font: normal 400 1.4rem sans-serif;
+  .form-control,
+  .toggle-password {
+    border: none;
+    border-radius: 0;
+    background: transparent !important;
+    border-bottom: 1px solid #fff;
+  }
+
+  .form-control {
+    padding: .7rem 0 .7rem;
+    
+    color: #fff;
+    font: normal 400 1.6rem sans-serif;
+
+    &::placeholder {
+      color: #43505a;
+    }
+
+    &:focus {
+      color: #fff;
+      background: transparent;
+    }
+  }
+
+  .toggle-password {
+    padding: 0;
+    color: #fff;
+    font-size: 1.2rem !important;
+  }
+
+  .invalid-feedback,
+  .error {
+    margin-top: 1rem;
+    font: normal 400 1.4rem sans-serif;
+  }
 }
 
 
