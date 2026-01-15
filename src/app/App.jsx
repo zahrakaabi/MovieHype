@@ -9,7 +9,8 @@ import Layout from '../layout/layout';
 import { Favorites, Home } from '../pages';
 
 // Context
-import { FavoritesProvider, MoviesProvider, SearchProvider } from "../context";
+import { useAuth } from "../hooks";
+import { AuthProvider, FavoritesProvider, MoviesProvider, SearchProvider } from "../context";
 
 // Styles
 import './App.scss';
@@ -18,18 +19,24 @@ import './App.scss';
 /*                                APP COMPONENT                               */
 /* -------------------------------------------------------------------------- */
 const App = () => {
+/* ---------------------------------- HOOKS --------------------------------- */
+  const { profile } = useAuth();
+
 /* -------------------------------- RENDERING ------------------------------- */
   return (
     <SearchProvider>
       <MoviesProvider>
         <FavoritesProvider>
-          <Layout>
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route path="/favorites" element={<Favorites /> } />
-              {/* <Route path="/admin"><Admin movies={movies} searchInput={searchInput}/></Route> */}
-            </Routes>
-          </Layout>
+          <AuthProvider>
+            <Layout>
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route path="/favorites" element={<Favorites /> } />
+                {profile?.role==="admin" && <Route path="/admin" element={<h1>ADMIN PAGE TEST</h1>} />}
+                {/* <Route path="/admin"><Admin movies={movies} searchInput={searchInput}/></Route> */}
+              </Routes>
+            </Layout>
+          </AuthProvider>
         </FavoritesProvider>
       </MoviesProvider>
     </SearchProvider>

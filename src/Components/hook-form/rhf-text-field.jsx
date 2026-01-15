@@ -36,7 +36,7 @@ function RHFTextField({type="text", label, name, placeholder}) {
               {...(type === "number" && { valueAsNumber: true })}
             />
 
-            {isPassword && <button className="toggle-password cursor-pointer" onClick={() => setShowPassword((prev) => !prev)}>
+            {isPassword && <button className="toggle-password cursor-pointer" type="button" onClick={() => setShowPassword((prev) => !prev)}>
               {showPassword ? <i className="fa fa-eye" /> : <i className="fa fa-eye-slash" />}
             </button>}
           </div>

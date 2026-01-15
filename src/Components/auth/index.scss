@@ -1,6 +1,10 @@
 @use '../../styles/variables.scss' as vars;
 
 .loginModal {
+    @media (max-width: 580px) {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
     .modal-dialog {
         .modal-content {
             background-color: #06111a;

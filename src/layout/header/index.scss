@@ -56,8 +56,39 @@
             }
         }
 
-        .user {
-            i { font-size: 1.4rem; }
+        .user-icon {
+            &.isAuthenticated {
+                font-size: 1.6rem;
+
+                button::after {
+                    display: none;
+                } 
+
+                .dropdown-menu {
+                    &.show {
+
+                        .dropdown-item {
+                        color: vars.$clr-bg-dark;
+
+                        }
+                    }
+
+                    &[data-bs-popper] {
+                        left: unset;
+                        right: 0;
+                        margin-top: 0;
+                    }
+
+                    .dropdown-item {
+                        i {
+                            font-size: 1.2rem;
+                            color: vars.$clr-bg-dark
+                        }
+                    }
+                }
+            }
+
+            i { font-size: 1.6rem; }
         }
     }
 }

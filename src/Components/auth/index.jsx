@@ -15,7 +15,7 @@ import AuthFields from './auth-form/authFields';
 import { FormProvider } from '../hook-form';
 
 // Hooks & API
-import { useBoolean } from '../../hooks';
+import { useBoolean, useAuth } from '../../hooks';
 import { supabase } from '../../api/supabaseClient';
 
 // Styles
@@ -27,6 +27,7 @@ import './index.scss';
 function Auth({ open, onClose }) {
 /* ---------------------------------- HOOKS --------------------------------- */
   const isRegister = useBoolean();
+  const { setUser, setSession } = useAuth();
   const [authError, setAuthError] = useState(null);
 
 /* ------------------------ FORM VALIDATION WITH YUP ------------------------ */
@@ -75,36 +76,50 @@ function Auth({ open, onClose }) {
   
   const handleSend = handleSubmit(async (formData) => {
     const { firstName, lastName, email, password } = formData;
-    if (isRegister) {
-      const { data, error } = await supabase.auth.signUp({
-        email, 
-        password,
-        options: {
-          data: {
-            firstName: firstName,
-            lastName: lastName,
+
+    try {
+      if (isRegister.value) {
+        const { data, error } = await supabase.auth.signUp({
+          email, 
+          password,
+          options: {
+            data: {
+              first_name: firstName,
+              last_name: lastName,
+            },
           },
-        },
-      });
-      if (error) {
-        setAuthError(error.message);
+        });
+        if (error) {
+          setAuthError(error.message);
+          return;
+        };
+
+        alert(`Registration successful! Check your email (${email}) to confirm your account before logging in.`);
+
+        reset();
+        onClose();
+        return;
+      } else {
+        const { data, error } = await supabase.auth.signInWithPassword({email, password});
+        if (error) {
+          setAuthError(error.message);
+          return;
+        };
+        
+        alert(`Login successful! Welcome back, ${data.user.user_metadata.firstName || email}`);
+
+        reset();
+        onClose();
         return;
       };
-      if (data.user) alert(`Welcome ${data.user.user_metadata.firstName} ${data.user.user_metadata.lastName}`);
-    } else {
-      const { error } = await supabase.auth.signInWithPassword({email, password});
-      if (error) {
-        setAuthError(error.message);
-        return;
-      };
+    } catch (error) {
+      setAuthError(error.message || "Something went wrong");
     };
-    reset();
-    onClose();
   });
 
 /* -------------------------------- RENDERING ------------------------------- */
   return (
-    <Modal className="loginModal wrapper" show={open} onHide={onClose} size="md" aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal className="loginModal" show={open} onHide={onClose} size="md" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
        <FormProvider className="flex items-center flex-col" methods={methods} onSubmit={handleSend}>
