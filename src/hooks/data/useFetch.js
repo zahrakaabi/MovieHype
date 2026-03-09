@@ -3,13 +3,13 @@
 /* -------------------------------------------------------------------------- */
 // Packages
 import { useEffect, useState } from "react";
-import axiosInstance from "../../lib/axios";
+import { handleSupabase } from "../../utils/apiHelper";
 
 /* -------------------------------------------------------------------------- */
 /*                            useFetch CUSTOM HOOK                            */
 /* -------------------------------------------------------------------------- */
 //@TO DO : Use this useFetch<T>(url: string) with Typescript
-function useFetch(url) {
+function useFetch(query) {
 /* ---------------------------------- HOOKS --------------------------------- */
   const [data, setData] = useState(null); //<T | null>
   const [loading, setLoading] = useState(true);
@@ -23,26 +23,30 @@ function useFetch(url) {
         setLoading(true);
         setError(null);
 
+        // With axios
         //@TO DO : Typescript get<T>()
-        const response = await axiosInstance.get(url, {
-          signal: controller.signal,
-        });
+        // const response = await axiosInstance.get(url, {
+        //   signal: controller.signal,
+        // });
+        // setData(response.data);
 
-        setData(response.data);
+        // With Supabase
+        const result = await handleSupabase(query);
+        setData(result);
       } catch (err) {
-        setError("Failed to load data");
+        setError("Failed to load data", err);
       } finally {
         setLoading(false);
-      }
+      };
     };
 
     fetchData();
 
     return () => controller.abort();
-  }, [url]);
+  }, [query]);
 
 /* -------------------------------- RENDERING ------------------------------- */
-  return { data, loading, error };
+  return { data, setData, loading, error };
 };
 
 export default useFetch;

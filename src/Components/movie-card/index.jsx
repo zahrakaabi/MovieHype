@@ -25,7 +25,7 @@ function MovieCard({ movie }) {
 /* -------------------------------- RENDERING ------------------------------- */
   return (
     <>
-      <div className="movie w-full">
+      <div className="movie">
         <div className="movie__img cursor-pointer" onClick={viewMovie.onTrue}>
           <img className="cover" src={Poster} alt={Title} />
         </div>

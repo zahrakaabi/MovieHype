@@ -2,7 +2,7 @@
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
 // Packages
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -27,7 +27,6 @@ import './index.scss';
 function Auth({ open, onClose }) {
 /* ---------------------------------- HOOKS --------------------------------- */
   const isRegister = useBoolean();
-  const { setUser, setSession } = useAuth();
   const [authError, setAuthError] = useState(null);
 
 /* ------------------------ FORM VALIDATION WITH YUP ------------------------ */

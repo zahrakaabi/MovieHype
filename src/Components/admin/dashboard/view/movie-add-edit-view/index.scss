@@ -1,0 +1,39 @@
+.addEditMovieModal {
+    .modal-dialog {
+        max-height: 80%;
+        overflow-y: auto;
+
+        .modal-content {
+            color: white;
+            background-color: #06111a;
+
+            .modal-header {
+                .btn-close {
+                    border: none;
+                    filter: invert(1);
+                }
+            }
+
+            .modal-body {
+                padding: 3rem 1.5rem;
+
+                form {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    
+                    button {
+                        border-color: #fff;
+                        padding: 1rem 2rem;
+                        background: #0e2436;
+                        font: normal 400 1.6rem sans-serif;
+                    }
+                }
+            }
+
+            .modal-footer {
+                border-top: 0;
+            }
+        }
+    }
+}

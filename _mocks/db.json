@@ -1,26 +1,7 @@
 {
   "posts": [
     {
-      "id": 2,
-      "Title": "I Am Legend",
-      "Year": "2007",
-      "Runtime": "101 min",
-      "Genre": "Drama, Horror, Sci-Fi",
-      "Actors": "Will Smith, Zoe Saldana, Sigourney Weaver, Stephen Lang",
-      "Director": "Francis Lawrence",
-      "Plot": "Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure.",
-      "Language": "English",
-      "Country": "USA",
-      "Awards": "9 wins & 21 nominations.",
-      "Poster": "https://m.media-amazon.com/images/I/91Xmg5sQQZL._AC_SY741_.jpg",
-      "Metascore": "65",
-      "imdbRating": "7.2",
-      "imdbVotes": "533,874",
-      "Type": "movie",
-      "Rate": "6.4"
-    },
-    {
-      "id":3,
+      "id": 3,
       "Title": "300",
       "Year": "2006",
       "Runtime": "117 min",
@@ -265,25 +246,6 @@
       "imdbVotes": "N/A",
       "Type": "movie",
       "Rate": "9.3"
-    },
-    {
-      "id": 16,
-      "Title": "Luke Cage",
-      "Year": "2016",
-      "Runtime": "55 min",
-      "Genre": "Action, Crime, Drama",
-      "Actors": "Mahershala Ali, Mike Colter, Frankie Faison, Erik LaRay Harvey",
-      "Plot": "Given superstrength and durability by a sabotaged experiment, a wrongly accused man escapes prison to become a superhero for hire.",
-      "Language": "English",
-      "Country": "USA",
-      "Awards": "N/A",
-      "Poster": "https://fr.web.img6.acsta.net/pictures/18/07/06/10/31/4093035.jpg",
-      "Metascore": "N/A",
-      "imdbRating": "N/A",
-      "imdbVotes": "N/A",
-      "Type": "series",
-      "totalSeasons": "1",
-      "Rate": "8.3"
     }
   ],
   "comments": [],

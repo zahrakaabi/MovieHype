@@ -1,6 +1,7 @@
 @use '../../styles/variables.scss' as vars; 
 
 .movie {
+    width: 47%;
     max-width: 24rem;
 
     &__img {

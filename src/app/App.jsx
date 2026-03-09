@@ -6,11 +6,12 @@ import { Route, Routes } from "react-router-dom";
 
 // UI Local Components
 import Layout from '../layout/layout';
-import { Favorites, Home } from '../pages';
+import { Admin, Favorites, Home } from '../pages';
 
-// Context
+// Context & Hooks & Utils
 import { useAuth } from "../hooks";
 import { AuthProvider, FavoritesProvider, MoviesProvider, SearchProvider } from "../context";
+import { RequireRole } from "../Components/auth/RequireRole";
 
 // Styles
 import './App.scss';
@@ -19,9 +20,6 @@ import './App.scss';
 /*                                APP COMPONENT                               */
 /* -------------------------------------------------------------------------- */
 const App = () => {
-/* ---------------------------------- HOOKS --------------------------------- */
-  const { profile } = useAuth();
-
 /* -------------------------------- RENDERING ------------------------------- */
   return (
     <SearchProvider>
@@ -32,8 +30,12 @@ const App = () => {
               <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/favorites" element={<Favorites /> } />
-                {profile?.role==="admin" && <Route path="/admin" element={<h1>ADMIN PAGE TEST</h1>} />}
-                {/* <Route path="/admin"><Admin movies={movies} searchInput={searchInput}/></Route> */}
+                <Route path="/admin" element={
+                    <RequireRole allowedRoles={["admin"]}>
+                      <Admin />
+                    </RequireRole>
+                  }
+                />
               </Routes>
             </Layout>
           </AuthProvider>

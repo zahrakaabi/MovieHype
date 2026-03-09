@@ -1,0 +1,50 @@
+.movie-list-table {
+  color: white;
+  border-radius: 4px;
+  border: 1px solid #0f2c44;
+  border-collapse: collapse;
+  font: normal 400 1.4rem sans-serif; 
+
+  thead {
+    background-color:#0f2c44;
+
+    tr {
+      th {
+        padding: .5rem 1rem;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #0f2c44;
+
+      &:hover {
+        background-color: #081722;
+      }
+
+      td {
+        padding: 1rem;
+
+        &.movie {
+          gap: 1rem;
+
+          img {
+            width: 50px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 4px;
+          }
+        }
+
+        button {
+            border: none;
+            background-color: transparent;
+            color: #fff;
+            font: normal 400 1.4rem sans-serif;
+            cursor: pointer;
+        }
+      }
+    }
+  }
+}

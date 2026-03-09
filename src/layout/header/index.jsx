@@ -61,6 +61,13 @@ function Header() {
                             <i className="fas fa-search"></i>
                         </Button>
                     </Form>
+                    {!!user && !!user.email_confirmed_at && (
+                        <Link to="/admin"  
+                        title="Admin Dashboard"
+                        aria-label="Admin Dashboard">
+                            Admin
+                        </Link>
+                    )}
                     <Link to="/favorites" 
                     className="favorites flex items-center pos-r" 
                     title="Favorites"

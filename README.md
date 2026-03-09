@@ -11,4 +11,10 @@ AUTHENTICATION & AUTHORIZATION
 JWT (https://www.jwt.io/introduction#what-is-json-web-token-structure)
 -Supabase : 
 Understand table : (https://supabase.com/docs/guides/database/tables)
-Profiles table : (https://supabase.com/docs/guides/auth/managing-user-data)
+users table : (https://supabase.com/docs/guides/auth/managing-user-data)
+
+
+@TO DO:
+- Add confirm "delete movie"
+- Edit Movie 
+- Add Movie

@@ -1,0 +1,1 @@
+export { default as MovieListView } from './movie-list-view';

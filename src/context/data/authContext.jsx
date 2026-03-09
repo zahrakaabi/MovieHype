@@ -25,15 +25,14 @@ export const AuthContext = createContext({
 function AuthProvider({ children }) {
 /* ---------------------------------- HOOKS --------------------------------- */
   const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const [profile, setProfile] = useState(null);
 
   // Fetch profile for a given user
   const fetchProfile = async (userId) => {
     const { data, error } = await supabase
-      .from("profiles")
+      .from("users")
       .select("first_name, last_name, email, role")
       .eq("id", userId)
       .single();
