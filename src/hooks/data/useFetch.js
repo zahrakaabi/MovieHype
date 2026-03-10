@@ -17,10 +17,10 @@ function useFetch(query) {
 
   useEffect(() => {
     const controller = new AbortController();
+    setLoading(true);
 
     async function fetchData() {
       try {
-        setLoading(true);
         setError(null);
 
         // With axios

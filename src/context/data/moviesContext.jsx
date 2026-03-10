@@ -24,7 +24,7 @@ function MoviesProvider({ children }) {
 /* ---------------------------------- HOOKS --------------------------------- */
     // Get Movies
     //if axios use this endpoints.movies.list
-    const movieQuery = supabase.from('movies').select('*');
+    const movieQuery = useMemo(() => supabase.from('movies').select('*').order('id', { ascending: true }), []);
     const { data: movies, setData: setMovies, error, loading } = useFetch(movieQuery);
 
     const addMovie = useCallback(async (formData) => {

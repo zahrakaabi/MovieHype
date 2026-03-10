@@ -8,7 +8,7 @@ import { useMemo } from "react";
 import { useMovies, useSearch } from "../../../hooks";
 
 // UI Local Componsnts
-import { MovieCard } from "../../../Components";
+import { MovieCard, MovieCardSkeleton } from "../../../Components";
 
 // Styles
 import './index.scss';
@@ -19,7 +19,7 @@ import './index.scss';
 function MoviesSection() {
 /* ---------------------------------- HOOKS --------------------------------- */
   const { search } = useSearch();
-  const { movies } = useMovies();
+  const { movies, loading } = useMovies();
   
   const filteredMovies = useMemo(() => {
     return movies?.filter((movie) =>
@@ -30,7 +30,10 @@ function MoviesSection() {
 /* -------------------------------- RENDERING ------------------------------- */
   return (
     <div className="movies-container wrapper seperation flex flex-wrap justify-center">
-      {filteredMovies?.map((movie) => <MovieCard key={movie.id} movie={movie} /> )}
+      {loading 
+        ? Array.from({ length: 8 }).map((_, i) => <MovieCardSkeleton key={i} />)
+        : filteredMovies?.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+      }
     </div>
   )
 };
