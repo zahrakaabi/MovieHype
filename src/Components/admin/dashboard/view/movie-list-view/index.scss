@@ -25,6 +25,7 @@
 
       td {
         padding: 1rem;
+        vertical-align: middle;
 
         &.movie {
           gap: 1rem;
@@ -37,12 +38,16 @@
           }
         }
 
+        &.skeleton-movie-cell {
+          gap: 1rem;
+        }
+
         button {
-            border: none;
-            background-color: transparent;
-            color: #fff;
-            font: normal 400 1.4rem sans-serif;
-            cursor: pointer;
+          border: none;
+          background-color: transparent;
+          color: #fff;
+          font: normal 400 1.4rem sans-serif;
+          cursor: pointer;
         }
       }
     }

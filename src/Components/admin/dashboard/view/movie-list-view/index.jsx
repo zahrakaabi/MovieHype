@@ -14,6 +14,7 @@ import { HOST_API } from '../../../../../constants/config-global';
 // UI Local Components
 import MovieTableRow from '../../movie-table-row';
 import MovieAddEditView from '../movie-add-edit-view';
+import { MovieTableSkeleton } from '../../movie-table-row-skeleton';
 
 // Styles
 import './index.scss';
@@ -55,13 +56,18 @@ function MovieListView() {
             </tr>
           </thead>
           <tbody>
-            {movies?.map((movie) => <MovieTableRow 
-              key={movie.id} 
-              movie={movie} 
-              openEdit={editMovie.onTrue}
-              setSelectedMovie={setSelectedMovie} 
-              handleDeleteRow={handleDeleteRow} 
-            />)}
+            {!movies
+              ? <MovieTableSkeleton rows={6} />
+              : movies?.map((movie) => (
+                <MovieTableRow
+                  key={movie.id}
+                  movie={movie}
+                  openEdit={editMovie.onTrue}
+                  setSelectedMovie={setSelectedMovie}
+                  handleDeleteRow={handleDeleteRow}
+                />
+              ))
+            }
           </tbody>
         </table>
       </div>

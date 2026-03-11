@@ -31,9 +31,10 @@ function useFetch(query) {
         // setData(response.data);
 
         // With Supabase
-        const result = await handleSupabase(query);
+        const result = await handleSupabase(query());
         setData(result);
       } catch (err) {
+        console.log("error:", err);
         setError("Failed to load data", err);
       } finally {
         setLoading(false);
