@@ -5,7 +5,7 @@
 import { useMemo } from "react";
 
 // UI Local Components
-import { FavoriteMovieCard } from "../../Components";
+import { EmptyState, FavoriteMovieCard } from "../../Components";
 
 // Custom Hooks
 import { useFavorites, useSearch } from "../../hooks";
@@ -28,6 +28,16 @@ function Favorites() {
   return (
     <div className="favorites wrapper seperation">
       {filteredFavorites.map((movie) => <FavoriteMovieCard key={movie.id} movie={movie} />)}
+      {filteredFavorites.length === 0 && (
+        <EmptyState
+          icon="🎬"
+          title="No favorites found"  
+          description={`${search 
+            ? "No favorites match your search." 
+            : "You haven't added any favorites yet."
+          }`}
+        />
+      )}
     </div>
   )
 };

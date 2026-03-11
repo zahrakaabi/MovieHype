@@ -8,7 +8,7 @@ import { useMemo } from "react";
 import { useMovies, useSearch } from "../../../hooks";
 
 // UI Local Componsnts
-import { MovieCard, MovieCardSkeleton } from "../../../Components";
+import { EmptyState, MovieCard, MovieCardSkeleton } from "../../../Components";
 
 // Styles
 import './index.scss';
@@ -34,6 +34,13 @@ function MoviesSection() {
         ? Array.from({ length: 8 }).map((_, i) => <MovieCardSkeleton key={i} />)
         : filteredMovies?.map((movie) => <MovieCard key={movie.id} movie={movie} />)
       }
+      {!loading && filteredMovies?.length === 0 && (
+        <EmptyState
+          icon="😔"
+          title="No movies found"
+          description="No movies match your search criteria. Please try again with different keywords."
+        />
+      )}
     </div>
   )
 };

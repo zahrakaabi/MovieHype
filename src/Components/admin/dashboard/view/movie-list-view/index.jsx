@@ -2,11 +2,11 @@
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
 // Packages
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useSnackbar } from 'notistack';
 
 // Custom Hooks
-import { useBoolean, useMovies } from '../../../../../hooks';
+import { useBoolean, useMovies, useSearch } from '../../../../../hooks';
 
 // UI Lib Components
 import { Button } from 'react-bootstrap';
@@ -16,6 +16,7 @@ import MovieTableRow from '../../movie-table-row';
 import MovieAddEditView from '../movie-add-edit-view';
 import { MovieTableSkeleton } from '../../movie-table-row-skeleton';
 import { ConfirmDialog } from '../../../../custom-dialog';
+import EmptyState from '../../../../empty-state';
 
 // Styles
 import './index.scss';
@@ -30,8 +31,16 @@ function MovieListView() {
   const editMovie = useBoolean();
   const confirmDeleteMovie = useBoolean();
   const { enqueueSnackbar } = useSnackbar();
+  const { search } = useSearch();
 
 /* --------------------------------- CONSTS --------------------------------- */
+  const filteredMovies = useMemo(() => {
+    if (!movies) return;
+    return Object.values(movies).filter((movie) =>
+      movie.Title.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [movies, search]);
+  
   const handleDeleteRow = useCallback((movie) => {
     setCurrentMovie(movie);
     confirmDeleteMovie.onTrue();
@@ -54,31 +63,39 @@ function MovieListView() {
   return (
     <>
       <div className="wrapper seperation">
-        <table className="movie-list-table w-full">
-          <thead>
-            <tr>
-              <th>Movie</th>
-              <th>Create at</th>
-              <th>Type</th>
-              <th>Genre</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {!movies
-              ? <MovieTableSkeleton rows={6} />
-              : movies?.map((movie) => (
-                <MovieTableRow
-                  key={movie.id}
-                  movie={movie}
-                  setCurrentMovie={setCurrentMovie}
-                  openEdit={editMovie.onTrue}
-                  handleDeleteRow={handleDeleteRow}
-                />
-              ))
-            }
-          </tbody>
-        </table>
+        {filteredMovies?.length === 0 ? (
+          <EmptyState
+            icon="🎬"
+            title="No movies found"
+            description="Try adjusting your search or filter to find what you're looking for."
+          />
+        ) : (
+          <table className="movie-list-table w-full">
+            <thead>
+              <tr>
+                <th>Movie</th>
+                <th>Create at</th>
+                <th>Type</th>
+                <th>Genre</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {!filteredMovies
+                ? <MovieTableSkeleton rows={6} />
+                : filteredMovies?.map((movie) => (
+                  <MovieTableRow
+                    key={movie.id}
+                    movie={movie}
+                    setCurrentMovie={setCurrentMovie}
+                    openEdit={editMovie.onTrue}
+                    handleDeleteRow={handleDeleteRow}
+                  />
+                ))
+              }
+            </tbody>
+          </table>
+        )}
       </div>
       
       {editMovie.value && ( 

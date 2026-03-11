@@ -1,0 +1,24 @@
+.empty-state {
+  padding: 6.4rem 2.4rem;
+
+  &__icon {
+    font-size: 4.8rem;
+    margin-bottom: 1.6rem;
+    opacity: 0.4;
+    filter: grayscale(1);
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #c8d8e4;
+    margin-bottom: 0.8rem;
+  }
+
+  &__description {
+    font-size: 1.4rem;
+    color: #4a6a82;
+    max-width: 280px;
+    line-height: 1.6;
+  }
+}
