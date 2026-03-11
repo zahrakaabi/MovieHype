@@ -6,7 +6,7 @@
 /* -------------------------------------------------------------------------- */
 /*                           MOVIE TABLE ROW COMPONENT                        */
 /* -------------------------------------------------------------------------- */
-function MovieTableRow({ movie, openEdit, handleDeleteRow }) {
+function MovieTableRow({ movie, openEdit, setCurrentMovie, handleDeleteRow }) {
 /* --------------------------------- CONSTS --------------------------------- */
   const { id, Title, Year, Type, Genre, Poster } = movie;
 
@@ -22,7 +22,10 @@ function MovieTableRow({ movie, openEdit, handleDeleteRow }) {
         <td>{Genre}</td>
         <td>
             <button className="edit" type="button" aria-label='Edit movie' title="Edit movie"
-            onClick={() => openEdit()}>
+            onClick={() => {
+                openEdit();
+                setCurrentMovie(movie);
+            }}>
                 <i className="fa-regular fa-pen-to-square"></i>
             </button>
             <button className="delete" type="button" aria-label='Delete movie' title="Delete movie"
