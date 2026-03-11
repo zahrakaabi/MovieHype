@@ -5,7 +5,7 @@
 import { Controller, useFormContext } from "react-hook-form";
 
 // UI Lib Components
-import { Form, InputGroup } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useState } from "react";
 
 /* -------------------------------------------------------------------------- */

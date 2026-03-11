@@ -6,13 +6,13 @@
 /* -------------------------------------------------------------------------- */
 /*                           MOVIE TABLE ROW COMPONENT                        */
 /* -------------------------------------------------------------------------- */
-function MovieTableRow({ movie, openEdit, setSelectedMovie, handleDeleteRow }) {
+function MovieTableRow({ movie, openEdit, handleDeleteRow }) {
 /* --------------------------------- CONSTS --------------------------------- */
   const { id, Title, Year, Type, Genre, Poster } = movie;
 
 /* -------------------------------- RENDERING ------------------------------- */
   return (
-    <tr>
+    <tr key={id}>
         <td className="movie flex items-center">
             <img src={Poster} alt={Title} className="movie-poster" />
             <span className="movie-title">{Title}</span>
@@ -22,10 +22,7 @@ function MovieTableRow({ movie, openEdit, setSelectedMovie, handleDeleteRow }) {
         <td>{Genre}</td>
         <td>
             <button className="edit" type="button" aria-label='Edit movie' title="Edit movie"
-            onClick={() => {
-                openEdit();
-                setSelectedMovie(movie);
-            }}>
+            onClick={() => openEdit()}>
                 <i className="fa-regular fa-pen-to-square"></i>
             </button>
             <button className="delete" type="button" aria-label='Delete movie' title="Delete movie"

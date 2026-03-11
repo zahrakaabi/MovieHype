@@ -2,14 +2,11 @@
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
 // Packages
-import { useCallback, useState } from 'react';
-import axios from 'axios';
+import { useCallback } from 'react';
 import { useSnackbar } from 'notistack';
 
 // Hooks & Lib
 import { useBoolean, useMovies } from '../../../../../hooks';
-import { endpoints } from '../../../../../lib/axios';
-import { HOST_API } from '../../../../../constants/config-global';
 
 // UI Local Components
 import MovieTableRow from '../../movie-table-row';
@@ -24,18 +21,14 @@ import './index.scss';
 /* -------------------------------------------------------------------------- */
 function MovieListView() {
 /* ---------------------------------- HOOKS --------------------------------- */
-  const [selectedMovie, setSelectedMovie] = useState(null);
-  const { movies, setMovies } = useMovies();
+  const { movies, deleteMovie } = useMovies();
   const editMovie = useBoolean();
   const { enqueueSnackbar } = useSnackbar();
 
 /* --------------------------------- CONSTS --------------------------------- */
   const handleDeleteRow = useCallback(
     async (movieId) => {
-      await axios.delete(`${HOST_API}${endpoints.movies.list}/${movieId}`);
-      const newMovies = movies.filter((row) => row.id !== movieId);
-      setMovies(newMovies);
-      setSelectedMovie(null);
+      await deleteMovie(movieId);
       enqueueSnackbar('Movie deleted successfully', { variant: 'success' });
     },
     [movies]
@@ -63,7 +56,6 @@ function MovieListView() {
                   key={movie.id}
                   movie={movie}
                   openEdit={editMovie.onTrue}
-                  setSelectedMovie={setSelectedMovie}
                   handleDeleteRow={handleDeleteRow}
                 />
               ))

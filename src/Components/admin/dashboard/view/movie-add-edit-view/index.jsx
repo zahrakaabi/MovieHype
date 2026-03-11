@@ -6,6 +6,7 @@ import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { enqueueSnackbar } from 'notistack';
 
 // UI Lib Components
 import { Button, Modal } from 'react-bootstrap';
@@ -57,28 +58,31 @@ function MovieAddEditView({ currentMovie, open, onClose }) {
   const {
     reset,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { isSubmitting }
   } = methods;
 
 /* ------------------------------ HANDLE SUBMIT ----------------------------- */
   const handleAddEditMovie = handleSubmit(async (movieData) => {
     if (currentMovie) {
       await updateMovie(currentMovie.id, movieData);
+      onClose();
     } else {
       await addMovie(movieData);
+      onClose();
+      reset();
     };
+    enqueueSnackbar('Movie saved successfully', { variant: 'success' });
   });
 
 /* -------------------------------- RENDERING ------------------------------- */
   return (
     <Modal className="addEditMovieModal" show={open} onHide={onClose} size="md" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton>
-        <h4>Update or Add Movie</h4>
+        <h4>{currentMovie ? "Update Movie" : "Add Movie"}</h4>
       </Modal.Header>
       
       <Modal.Body>
         <FormProvider className="flex items-center flex-col" methods={methods} onSubmit={handleAddEditMovie}>
-          {/* {authError && <div className="mb-4 text-danger error">{authError}</div>} */}
           <div className="w-full">
               <RHFUpload 
                 name="Poster" 
@@ -112,7 +116,7 @@ function MovieAddEditView({ currentMovie, open, onClose }) {
           </div>
           <div className="flex justify-end w-full">
             <Button type="submit" disabled={isSubmitting}>
-              Update or add movie
+              {currentMovie ? "Update" : "Add"}
             </Button>
           </div>
         </FormProvider>
