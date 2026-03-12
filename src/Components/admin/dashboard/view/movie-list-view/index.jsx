@@ -73,7 +73,10 @@ function MovieListView() {
           <>
             <div className="movie-list-header flex items-center justify-between mb-4">
               <h4>My movies list</h4>
-              <Button className="add-movie" onClick={editMovie.onTrue}>
+              <Button className="add-movie" onClick={() => {
+                setCurrentMovie(null);
+                editMovie.onTrue();
+              }}>
                 <span>+</span>
                 Add Movie
               </Button>
@@ -91,9 +94,9 @@ function MovieListView() {
               <tbody>
                 {!filteredMovies
                   ? <MovieTableSkeleton rows={6} />
-                  : filteredMovies?.map((movie) => (
+                  : filteredMovies?.map((movie, index) => (
                     <MovieTableRow
-                      key={movie.id}
+                      key={index}
                       movie={movie}
                       setCurrentMovie={setCurrentMovie}
                       openEdit={editMovie.onTrue}

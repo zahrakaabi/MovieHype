@@ -66,7 +66,9 @@ function MovieAddEditView({ currentMovie, open, onClose }) {
     if (currentMovie) {
       await updateMovie(currentMovie.id, movieData);
       onClose();
+      reset();
     } else {
+      console.log('movieData', movieData);
       await addMovie(movieData);
       onClose();
       reset();

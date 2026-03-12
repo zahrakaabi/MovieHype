@@ -6,7 +6,7 @@ if (!supabaseUrl || !supabaseKey) {
   throw new Error(
     "Supabase URL and Key are required. Check your .env.local file."
   );
-}
+};
 
 export const config = {
   url: supabaseUrl,

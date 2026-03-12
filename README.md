@@ -12,13 +12,3 @@ JWT (https://www.jwt.io/introduction#what-is-json-web-token-structure)
 -Supabase : 
 Understand table : (https://supabase.com/docs/guides/database/tables)
 users table : (https://supabase.com/docs/guides/auth/managing-user-data)
-
-
-@TO DO:
-- Add movie in admin
-- loading for buttons
-- Add skeleton movie -------------------------------------------------> done
-- error handling (form) ----------------------------------------------> done
-- Confirm dialog before deleting a movie -----------------------------> done
-- Empty states (no favorites yet) ------------------------------------> done
-- Toast notifications after add/edit/delete (like react-hot-toast) ---> done

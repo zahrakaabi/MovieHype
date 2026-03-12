@@ -30,8 +30,9 @@ function MoviesProvider({ children }) {
     const { data: movies, setData: setMovies, error, loading } = useFetch(movieQuery);
 
     const addMovie = useCallback(async (formData) => {
-        const { error } = await supabase.from('movies').insert([formData]);
-        if (!error) setMovies((prev) => [...prev, formData]);
+        const { id, ...movieWithoutId } = formData;
+        const { error } = await supabase.from('movies').insert([movieWithoutId]);
+        if (!error) setMovies((prev) => [...prev, movieWithoutId]);
     }, []);
 
     const updateMovie = useCallback(async (id, formData) => {
