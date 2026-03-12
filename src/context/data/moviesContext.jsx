@@ -23,7 +23,7 @@ export const MoviesContext = createContext({
 function MoviesProvider({ children }) {
 /* ---------------------------------- HOOKS --------------------------------- */
     // Get Movies
-    //if axios use this endpoints.movies.list
+    // if axios use this endpoints.movies.list
     const movieQuery = useMemo(() => 
         () => supabase.from('movies').select('*').order('id', { ascending: true }
     ), []);
@@ -31,8 +31,16 @@ function MoviesProvider({ children }) {
 
     const addMovie = useCallback(async (formData) => {
         const { id, ...movieWithoutId } = formData;
-        const { error } = await supabase.from('movies').insert([movieWithoutId]);
-        if (!error) setMovies((prev) => [...prev, movieWithoutId]);
+        const { data, error } = await supabase
+            .from('movies')
+            .insert([{ 
+                ...movieWithoutId,
+                Year: new Date().getFullYear().toString() // Add current year as default value for Year
+            }])
+            .select()
+            .single();
+
+        if (!error) setMovies((prev) => [...prev, data]);
     }, []);
 
     const updateMovie = useCallback(async (id, formData) => {

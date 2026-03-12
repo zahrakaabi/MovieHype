@@ -57,7 +57,7 @@ function MovieListView() {
     
   }, [currentMovie]);
 
-  const MOVIE_TITLE = movies.find((movie) => movie.id === currentMovie)?.Title || 'this';
+  const MOVIE_TITLE = movies?.find((movie) => movie?.id === currentMovie)?.Title || 'this';
 
 /* -------------------------------- RENDERING ------------------------------- */
   return (

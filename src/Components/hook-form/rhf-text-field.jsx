@@ -27,23 +27,29 @@ function RHFTextField({type="text", label, name, placeholder}) {
         <Form.Group className="form-group mb-5 w-full">
           <Form.Label>{label}</Form.Label>
 
-          <div className="flex">
-            <Form.Control
-              {...field}
-              type={isPassword ? (showPassword ? "text" : "password") : type}
-              placeholder={placeholder}
-              isInvalid={!!error}
-              {...(type === "number" && { valueAsNumber: true })}
-            />
+          <div className="flex flex-col">
+            <div className="flex">
+              <Form.Control
+                {...field}
+                type={isPassword ? (showPassword ? "text" : "password") : type}
+                placeholder={placeholder}
+                isInvalid={!!error}
+                {...(type === "number" && { valueAsNumber: true })}
+              />
 
-            {isPassword && <button className="toggle-password cursor-pointer" type="button" onClick={() => setShowPassword((prev) => !prev)}>
-              {showPassword ? <i className="fa fa-eye" /> : <i className="fa fa-eye-slash" />}
-            </button>}
+              {isPassword && (
+                <button className="toggle-password cursor-pointer" type="button" onClick={() => setShowPassword((prev) => !prev)}>
+                  {showPassword ? <i className="fa fa-eye" /> : <i className="fa fa-eye-slash" />}
+                </button>
+              )}
+            </div>
+
+            {error && (
+              <Form.Control.Feedback type="invalid" className="d-block">
+                {error?.message}
+              </Form.Control.Feedback>
+            )}
           </div>
-
-          {error && <Form.Control.Feedback type="invalid">
-            {error?.message}
-          </Form.Control.Feedback>}
         </Form.Group>
       )}
     />

@@ -33,7 +33,7 @@ function MovieAddEditView({ currentMovie, open, onClose }) {
 
 /* ------------------------ FORM VALIDATION WITH YUP ------------------------ */
   const NewAuthSchema = Yup.object().shape({
-    Poster: Yup.mixed().required("Movie image is required"),
+    Poster: Yup.string().required("Movie image is required"),
     Plot: Yup.string().required("Movie description is required"),
     Title: Yup.string().required("Movie name is required"),
     Type: Yup.string().required("Type is required"),
@@ -68,7 +68,6 @@ function MovieAddEditView({ currentMovie, open, onClose }) {
       onClose();
       reset();
     } else {
-      console.log('movieData', movieData);
       await addMovie(movieData);
       onClose();
       reset();
@@ -102,7 +101,7 @@ function MovieAddEditView({ currentMovie, open, onClose }) {
                 name="Plot"
                 placeholder="Movie Description"
               />
-              <div className="flex items-center gap-4">
+              <div className="flex gap-4">
                 <RHFSelect 
                   label="Type"
                   name="Type"

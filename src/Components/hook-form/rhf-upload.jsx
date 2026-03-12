@@ -10,6 +10,7 @@ import { Form } from "react-bootstrap";
 
 // Images
 import UPLOAD from "../../assets/images/upload_movie.png";
+import { supabase } from "../../api/supabaseClient";
 
 /* -------------------------------------------------------------------------- */
 /*                            RHF UPLOAD COMPONENT                            */
@@ -21,20 +22,36 @@ function RHFUpload({ name, movieImg }) {
   const [preview, setPreview] = useState(null);
 
 /* -------------------------------- CONSTANTS ------------------------------- */
-  const handleImage = (file, onChange) => {
+  const handleImage = async (file, onChange) => {
     if (!file) return;
 
     const validTypes = ["image/png", "image/jpeg", "image/jpg"];
     if (!validTypes.includes(file.type)) {
       alert("Invalid file type. Only PNG, JPG, JPEG are allowed.");
       return;
-    }
+    };
 
+    // Preview
     const reader = new FileReader();
     reader.onload = (e) => setPreview(e.target.result);
     reader.readAsDataURL(file);
 
-    onChange(file);
+    // Upload to Supabase Storage and store URL
+    const fileName = `${Date.now()}-${file.name}`;
+    const { error } = await supabase.storage
+      .from('movies-images')
+      .upload(fileName, file);
+
+    if (error) {
+      alert('Image upload failed');
+      return;
+    };
+
+    const { data } = supabase.storage
+      .from('movies-images')
+      .getPublicUrl(fileName);
+
+    onChange(data.publicUrl);
   };
 
   const handleDrop = (e, onChange) => {
@@ -103,9 +120,11 @@ function RHFUpload({ name, movieImg }) {
             />
           </div>
           
-          {error && <Form.Control.Feedback type="invalid">
-            {error?.message}
-          </Form.Control.Feedback>}
+          {error && (
+            <Form.Control.Feedback type="invalid" className="d-block">
+              {error?.message}
+            </Form.Control.Feedback>
+          )}
         </Form.Group>
       )}
     />

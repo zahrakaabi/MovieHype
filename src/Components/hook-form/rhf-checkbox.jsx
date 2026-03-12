@@ -3,7 +3,6 @@
 /* -------------------------------------------------------------------------- */
 // Packages
 import { Form } from "react-bootstrap";
-import { Controller, useFormContext } from "react-hook-form";
 
 /* -------------------------------------------------------------------------- */
 /*                                RHF CHECKBOX                                */

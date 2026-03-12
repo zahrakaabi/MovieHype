@@ -38,9 +38,11 @@ export function RHFSelect({ name, label, options }) {
             )}
           </Form.Select>
 
-          {error && <Form.Control.Feedback type="invalid">
-            {error?.message}
-          </Form.Control.Feedback>}
+          {error && (
+            <Form.Control.Feedback type="invalid" className="d-block">
+              {error?.message}
+            </Form.Control.Feedback>
+          )}
         </Form.Group>
       )}
     />
@@ -118,9 +120,11 @@ export function RHFMultipleSelect({ name, label, placeholder, options }) {
           </div>
           }
 
-          {error && <Form.Control.Feedback type="invalid">
-            {error?.message}
-          </Form.Control.Feedback>}
+          {error && (
+            <Form.Control.Feedback type="invalid" className="d-block">
+              {error?.message}
+            </Form.Control.Feedback>
+          )}
         </Form.Group>
       )}
     />
