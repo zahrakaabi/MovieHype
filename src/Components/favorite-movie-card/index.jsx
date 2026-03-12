@@ -2,7 +2,7 @@
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
 // Custom Hooks
-import { useFavorites } from '../../hooks';
+import { useBoolean, useFavorites } from '../../hooks';
 
 // Styles
 import './index.scss';
@@ -10,9 +10,10 @@ import './index.scss';
 /* -------------------------------------------------------------------------- */
 /*                        FAVORITE MOVIE CARD COMPONENT                       */
 /* -------------------------------------------------------------------------- */
-function FavoriteMovieCard({ movie }) {
+function FavoriteMovieCard({ movie, handleRemoveFavorite }) {
 /* --------------------------------- CONSTS --------------------------------- */
   const { 
+    id,
     Poster, 
     Title, 
     Year, 
@@ -23,7 +24,6 @@ function FavoriteMovieCard({ movie }) {
     Actors,
     Plot 
   } = movie;
-  const { removeFavorite } = useFavorites();
 
 /* -------------------------------- RENDERING ------------------------------- */
   return (
@@ -52,7 +52,7 @@ function FavoriteMovieCard({ movie }) {
         type="button" 
         title="Remove from favorites"
         aria-label="remove from favorites"
-        onClick={() =>removeFavorite(movie.id)}>
+        onClick={() => handleRemoveFavorite(movie.id)}>
           Remove from favorites
         </button>
       </div>

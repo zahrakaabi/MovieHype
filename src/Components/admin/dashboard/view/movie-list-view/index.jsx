@@ -70,31 +70,40 @@ function MovieListView() {
             description="Try adjusting your search or filter to find what you're looking for."
           />
         ) : (
-          <table className="movie-list-table w-full">
-            <thead>
-              <tr>
-                <th>Movie</th>
-                <th>Create at</th>
-                <th>Type</th>
-                <th>Genre</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {!filteredMovies
-                ? <MovieTableSkeleton rows={6} />
-                : filteredMovies?.map((movie) => (
-                  <MovieTableRow
-                    key={movie.id}
-                    movie={movie}
-                    setCurrentMovie={setCurrentMovie}
-                    openEdit={editMovie.onTrue}
-                    handleDeleteRow={handleDeleteRow}
-                  />
-                ))
-              }
-            </tbody>
-          </table>
+          <>
+            <div className="movie-list-header flex items-center justify-between mb-4">
+              <h4>My movies list</h4>
+              <Button className="add-movie" onClick={editMovie.onTrue}>
+                <span>+</span>
+                Add Movie
+              </Button>
+            </div>
+            <table className="movie-list-table w-full">
+              <thead>
+                <tr>
+                  <th>Movie</th>
+                  <th>Create at</th>
+                  <th>Type</th>
+                  <th>Genre</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {!filteredMovies
+                  ? <MovieTableSkeleton rows={6} />
+                  : filteredMovies?.map((movie) => (
+                    <MovieTableRow
+                      key={movie.id}
+                      movie={movie}
+                      setCurrentMovie={setCurrentMovie}
+                      openEdit={editMovie.onTrue}
+                      handleDeleteRow={handleDeleteRow}
+                    />
+                  ))
+                }
+              </tbody>
+            </table>
+          </>
         )}
       </div>
       

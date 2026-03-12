@@ -15,9 +15,10 @@ users table : (https://supabase.com/docs/guides/auth/managing-user-data)
 
 
 @TO DO:
+- Add movie in admin
+- loading for buttons
 - Add skeleton movie -------------------------------------------------> done
 - error handling (form) ----------------------------------------------> done
 - Confirm dialog before deleting a movie -----------------------------> done
-- Empty states (no favorites yet)
+- Empty states (no favorites yet) ------------------------------------> done
 - Toast notifications after add/edit/delete (like react-hot-toast) ---> done
-- Protected routes (redirect non-admins away from /admin)
