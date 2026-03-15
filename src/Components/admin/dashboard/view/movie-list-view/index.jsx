@@ -81,31 +81,33 @@ function MovieListView() {
                 Add Movie
               </Button>
             </div>
-            <table className="movie-list-table w-full">
-              <thead>
-                <tr>
-                  <th>Movie</th>
-                  <th>Create at</th>
-                  <th>Type</th>
-                  <th>Genre</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {!filteredMovies
-                  ? <MovieTableSkeleton rows={6} />
-                  : filteredMovies?.map((movie, index) => (
-                    <MovieTableRow
-                      key={index}
-                      movie={movie}
-                      setCurrentMovie={setCurrentMovie}
-                      openEdit={editMovie.onTrue}
-                      handleDeleteRow={handleDeleteRow}
-                    />
-                  ))
-                }
-              </tbody>
-            </table>
+            <div className='table-responsive'>
+              <table className="movie-list-table w-full">
+                <thead>
+                  <tr>
+                    <th>Movie</th>
+                    <th>Create at</th>
+                    <th>Type</th>
+                    <th>Genre</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {!filteredMovies
+                    ? <MovieTableSkeleton rows={6} />
+                    : filteredMovies?.map((movie, index) => (
+                      <MovieTableRow
+                        key={index}
+                        movie={movie}
+                        setCurrentMovie={setCurrentMovie}
+                        openEdit={editMovie.onTrue}
+                        handleDeleteRow={handleDeleteRow}
+                      />
+                    ))
+                  }
+                </tbody>
+              </table>
+            </div>
           </>
         )}
       </div>

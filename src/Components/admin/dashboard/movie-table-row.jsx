@@ -13,7 +13,7 @@ function MovieTableRow({ movie, openEdit, setCurrentMovie, handleDeleteRow }) {
 /* -------------------------------- RENDERING ------------------------------- */
   return (
     <tr key={id}>
-        <td className="movie flex items-center">
+        <td className="movie-cell flex items-center">
             <img src={Poster} alt={Title} className="movie-poster" />
             <span className="movie-title">{Title}</span>
         </td>

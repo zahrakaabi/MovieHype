@@ -24,7 +24,7 @@ function MovieModal({ movie, open, onClose }) {
         </div>
         <div className="movie-details">
           <ul className="flex gap-2">
-            {Genre.split(',').map((genre, index) => <li key={index}>{genre}</li>)}
+            {Genre.map((genre, index) => <li key={index}>{genre}</li>)}
           </ul>
           <p>{Plot}</p>
         </div>
