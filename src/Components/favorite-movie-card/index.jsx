@@ -28,7 +28,7 @@ function FavoriteMovieCard({ movie, handleRemoveFavorite }) {
 /* -------------------------------- RENDERING ------------------------------- */
   return (
     <div className="favorite-movie-card flex flex-wrap items-center gap-5">
-      <img className="img cover" src={Poster} alt={Title} />
+      <img className="img cover" src={Poster} alt={Title} loading="lazy" />
       <div className="content">
         <h2 className="content__title">{Title}</h2>
         <span className="content__date-genre">{Year} | {Runtime} | {Genre}</span>
@@ -51,7 +51,7 @@ function FavoriteMovieCard({ movie, handleRemoveFavorite }) {
         <button className="content__remove" 
         type="button" 
         title="Remove from favorites"
-        aria-label="remove from favorites"
+        aria-label="Remove from favorites"
         onClick={() => handleRemoveFavorite(movie.id)}>
           Remove from favorites
         </button>

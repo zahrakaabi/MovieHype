@@ -74,7 +74,7 @@ function RHFUpload({ name, movieImg }) {
 /* --------------------------- RENDER PLACEHOLDER --------------------------- */
   const renderPlaceholder = (
     <div className="placeholder flex flex-col gap-3 items-center justify-center">
-      <img className="placeholder__img" src={UPLOAD} alt="Upload" />
+      <img className="placeholder__img" src={UPLOAD} alt="Upload" loading="lazy" />
       <div className="text-center space-y-1">
         <h2 className="text-lg font-semibold">Drop or Select file</h2>
         <p className="text-sm text-muted-foreground">

@@ -20,7 +20,7 @@ function ConfirmDialog({ open, onClose, title, content, action, ...other }) {
       {content && <Modal.Body><h4>{content}</h4></Modal.Body> }
       <Modal.Footer>
         {action}
-        <Button variant="secondary" onClick={onClose}>Cancel</Button>
+        <Button variant="secondary" aria-label='Cancel' title="Title" onClick={onClose}>Cancel</Button>
       </Modal.Footer>
     </Modal>
   )

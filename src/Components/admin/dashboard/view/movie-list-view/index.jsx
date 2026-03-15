@@ -73,7 +73,7 @@ function MovieListView() {
           <>
             <div className="movie-list-header flex items-center justify-between mb-4">
               <h4>My movies list</h4>
-              <Button className="add-movie" onClick={() => {
+              <Button className="add-movie" aria-label="Add movie" title="Add movie" onClick={() => {
                 setCurrentMovie(null);
                 editMovie.onTrue();
               }}>

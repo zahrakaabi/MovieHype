@@ -116,7 +116,9 @@ function MovieAddEditView({ currentMovie, open, onClose }) {
               </div>
           </div>
           <div className="flex justify-end w-full">
-            <Button type="submit" disabled={isSubmitting}>
+            <Button type="submit" disabled={isSubmitting}
+            title={currentMovie ? "Update" : "Add"}
+            aria-label={currentMovie ? "Update" : "Add"}>
               {currentMovie ? "Update" : "Add"}
             </Button>
           </div>

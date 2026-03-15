@@ -75,9 +75,10 @@ function Favorites() {
           content="Are you sure you want to remove this movie from your favorites?"
           action={
             <Button 
-              variant="danger" 
-              onClick={handleConfirmRemove}
-            >
+            variant="danger" 
+            aria-label="Remove favorite"
+            title="Remove favorite"
+            onClick={handleConfirmRemove}>
               Remove
             </Button>
           }

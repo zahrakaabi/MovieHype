@@ -30,7 +30,7 @@ function MovieModal({ movie, open, onClose }) {
         </div>
       </Modal.Body>
       <Modal.Footer className="flex justify-start">
-        <Button onClick={onClose}>GET STARTED</Button>
+        <Button onClick={onClose} aria-label="Get started" title="Get started">GET STARTED</Button>
       </Modal.Footer>
     </Modal>
   )

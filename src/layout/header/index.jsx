@@ -53,6 +53,8 @@ function Header() {
             {search ? (
                     <Button className="cursor-pointer" 
                     variant="outline-secondary" 
+                    aria-label="Close search"
+                    title="Close search"
                     onClick={() => {
                         isSearchOpen.onFalse();
                         setSearch('');
@@ -60,7 +62,10 @@ function Header() {
                         <i className="fas fa-xmark"></i>
                     </Button>
                 ) : (
-                    <Button className="cursor-pointer" variant="outline-secondary">
+                    <Button className="cursor-pointer" 
+                    variant="outline-secondary"
+                    aria-label="Search"
+                    title="Search">
                         <i className="fas fa-search"></i>
                     </Button>
                 )

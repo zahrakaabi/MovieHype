@@ -27,7 +27,7 @@ function MovieCard({ movie }) {
     <>
       <div className="movie">
         <div className="movie__img cursor-pointer" onClick={viewMovie.onTrue}>
-          <img className="cover" src={Poster} alt={Title} />
+          <img className="cover" src={Poster} alt={Title} loading="lazy" />
         </div>
         <p className="movie__title">{Title}</p>
         <div className="flex justify-between items-center">

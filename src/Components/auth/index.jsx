@@ -124,7 +124,11 @@ function Auth({ open, onClose }) {
        <FormProvider className="flex items-center flex-col" methods={methods} onSubmit={handleSend}>
         {authError && <div className="mb-4 text-danger error">{authError}</div>}
         <AuthFields isRegister={isRegister.value} />
-        <Button type="submit" disabled={isSubmitting}>{isRegister.value ? 'Create an account' : 'Login'}</Button>
+        <Button type="submit" disabled={isSubmitting}
+        aria-label={isRegister.value ? 'Create an account' : 'Login'}
+        title={isRegister.value ? 'Create an account' : 'Login'}>
+          {isRegister.value ? 'Create an account' : 'Login'}
+        </Button>
        </FormProvider>
       </Modal.Body> 
       <Modal.Footer className="justify-center">

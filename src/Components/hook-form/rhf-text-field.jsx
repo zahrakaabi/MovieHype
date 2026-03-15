@@ -38,7 +38,10 @@ function RHFTextField({type="text", label, name, placeholder}) {
               />
 
               {isPassword && (
-                <button className="toggle-password cursor-pointer" type="button" onClick={() => setShowPassword((prev) => !prev)}>
+                <button className="toggle-password cursor-pointer" type="button" 
+                aria-label={showPassword ? 'Show password' : 'Hide password'}
+                title={showPassword ? 'Show password' : 'Hide password'}
+                onClick={() => setShowPassword((prev) => !prev)}>
                   {showPassword ? <i className="fa fa-eye" /> : <i className="fa fa-eye-slash" />}
                 </button>
               )}
