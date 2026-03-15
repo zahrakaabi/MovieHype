@@ -2,14 +2,14 @@
 /*                                DEPENDENCIES                                */
 /* -------------------------------------------------------------------------- */
 // Packages
+import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
 // UI Local Components
 import Layout from '../layout/layout';
-import { Admin, Favorites, Home } from '../pages';
+import { Admin, Favorites, Home } from '../routes/lazyRoutes';
 
 // Context & Hooks & Utils
-import { useAuth } from "../hooks";
 import { AuthProvider, FavoritesProvider, MoviesProvider, SearchProvider } from "../context";
 import { RequireRole } from "../Components/auth/RequireRole";
 
@@ -27,22 +27,24 @@ const App = () => {
         <FavoritesProvider>
           <AuthProvider>
             <Layout>
-              <Routes>
-                <Route exact path="/" element={<Home />} />
-                <Route path="/favorites" element={<Favorites /> } />
-                <Route path="/admin" element={
-                    <RequireRole allowedRoles={["admin"]}>
-                      <Admin />
-                    </RequireRole>
-                  }
-                />
-              </Routes>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                  <Route exact path="/" element={<Home />} />
+                  <Route path="/favorites" element={<Favorites /> } />
+                  <Route path="/admin" element={
+                      <RequireRole allowedRoles={["admin"]}>
+                        <Admin />
+                      </RequireRole>
+                    }
+                  />
+                </Routes>
+              </Suspense>
             </Layout>
           </AuthProvider>
         </FavoritesProvider>
       </MoviesProvider>
     </SearchProvider>
   );
-}
+};
 
 export default App;
