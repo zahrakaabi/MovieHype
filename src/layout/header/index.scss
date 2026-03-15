@@ -22,6 +22,40 @@
             color: vars.$clr-primary-light;
         }
 
+        .hideInMobile {}
+
+        .search-mobile {
+            @media screen and (min-width: 772px) {
+                display: none;
+            }
+
+            &__search {
+                i {
+                    font-size: 1.2rem;
+                }
+            }
+
+            &__overlay {
+                height: 100%;
+                position: fixed;
+                left: 0;
+                top: 0;
+                z-index: -1
+            }
+
+            &__dropdown {
+                position: fixed;
+                top: 7rem;
+                left: 0;
+            }
+        }
+
+        .search-desktop {
+            @media screen and (max-width: 773px) {
+                display: none;
+            }
+        }
+
         form {
             border-bottom: solid 1px vars.$clr-primary-light;
 
