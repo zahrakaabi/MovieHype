@@ -7,17 +7,11 @@
 // You can also remove this file if you'd prefer not to use a
 // service worker, and the Workbox build step will be skipped.
 
-import { clientsClaim } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-core.prod.mjs';
-import { ExpirationPlugin } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-expiration.prod.mjs';
-import { precacheAndRoute, createHandlerBoundToURL } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-precaching.prod.mjs';
-import { registerRoute } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-routing.prod.mjs';
-import { StaleWhileRevalidate } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-strategies.prod.mjs';
-
-// import { clientsClaim } from 'workbox-core';
-// import { ExpirationPlugin } from 'workbox-expiration';
-// import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
-// import { registerRoute } from 'workbox-routing';
-// import { StaleWhileRevalidate } from 'workbox-strategies';
+import { clientsClaim } from 'workbox-core';
+import { ExpirationPlugin } from 'workbox-expiration';
+import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
+import { registerRoute } from 'workbox-routing';
+import { StaleWhileRevalidate } from 'workbox-strategies';
 
 clientsClaim();
 
