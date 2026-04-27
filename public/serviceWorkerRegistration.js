@@ -34,7 +34,8 @@ export function register(config) {
 
 function registerValidSW(swUrl, config) {
   navigator.serviceWorker
-    .register(swUrl)
+    // Added the second argument here to support 'import' statements
+    .register(swUrl, { type: 'module' }) 
     .then((registration) => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;

@@ -75,6 +75,7 @@ function Auth({ open, onClose }) {
   
   const handleSend = handleSubmit(async (formData) => {
     const { firstName, lastName, email, password } = formData;
+        console.log('data', formData)
 
     try {
       if (isRegister.value) {
